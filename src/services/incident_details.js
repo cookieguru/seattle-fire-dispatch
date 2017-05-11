@@ -39,21 +39,15 @@ class IncidentDetailsService {
 	 * @private
 	 */
 	_parser(text) {
-		try {
-			require('tabris-js-node');
-			const cheerio = require('cheerio');
-			const $ = cheerio.load(text);
-
-			$('table, td').removeAttr('height').not('td[width="25%"]').removeAttr('width');
-			$('p[align="right"]').find('a').closest('td').remove();
-			$('script, a ').remove();
-			$('table table').css('width', '100%');
-			$('head').append('<meta name="viewport" content="width=device-width">');
-
-			return $.html();
-		} catch(e) {
-			return text;
-		}
+		//$('table, td').not('td[width="25%"]').removeAttr('width');
+		text = text.replace(/(<t(?:d|able) .*?)height="?\d+%?"?(.*?>)/g, '$1$2');
+		text = text.replace(/(<table .*?)width="?\d+%?"?(.*?>)/g, '$1$2');
+		text = text.replace(/(<td .*?)height="?\d+%?"?(.*?)>/g, '$1$2');
+		text = text.replace(/<td width="35%">[\S\s]*?<\/td>/, '');
+		text = text.replace(/<script[\S\s]*?<\/script>/g, '');
+		text = text.replace(/<a [\S\s]*?<\/a>/g, '');
+		text = text.replace('</head>', '<style type="text/css">table table{width:100%}</style></head>');
+		return text.replace('</head>', '<meta name="viewport" content="width=device-width"></head>');
 	}
 }
 

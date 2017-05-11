@@ -11,50 +11,6 @@ class IncidentsService {
 	 * @param {string} date
 	 * @return {Promise<string>,<string>}
 	 */
-	getIncidentsUsingDomParsing(date) {
-		return new Promise((resolve, reject) => {
-			require('tabris-js-node');
-			const cheerio = require('cheerio');
-			fetch(this._baseURL + date).then(response => {
-				if(!response.ok) {
-					reject(`Unable to fetch data from SFD: ${response.status} ${response.statusText}`);
-				}
-				return cheerio.load(response.text());
-			}).then($ => {
-				let map = ['date', 'incident_type', 'level', 'units', 'address', 'type'];
-				let first = $('tr[id]');
-				let data = [];
-				$('tr', first.parent()).each((rowNum, row) => {
-					let obj = {
-						active: $('td', row).first().hasClass('active'),
-					};
-					$('td', row).each((i, elem) => {
-						let text = $(elem).text().trim();
-						if(map[i] === 'date') {
-							obj[map[i]] = new Date(text).getTime();
-						} else if(map[i] === 'units') {
-							obj[map[i]] = text.split(' ');
-						} else if(map[i] === 'level') {
-							let int = parseInt(text);
-							obj[map[i]] = int + '' === text ? int : text || null;
-						} else {
-							obj[map[i]] = text;
-						}
-					});
-					data.push(obj);
-				});
-				resolve(data);
-			}).catch(e => {
-				reject(e);
-			});
-		});
-	}
-
-	/**
-	 * Gets incident details if available
-	 * @param {string} date
-	 * @return {Promise<string>,<string>}
-	 */
 	getIncidentsUsingRegex(date) {
 		return new Promise((resolve, reject) => {
 			fetch(this._baseURL + date).then(response => {

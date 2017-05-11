@@ -3,12 +3,10 @@
   "description": "Android app to display Seattle Fire Department's Real-Time 911 Dispatch",
   "main": "src/app.js",
   "dependencies": {
-    "cheerio": "^0.22.0",
     "md5": "^2.2.1",
     "moment": ">=2.14",
     "moment-timezone": "^0.5.11",
-    "tabris": "nightly",
-    "tabris-js-node": "^0.1.0"
+    "tabris": "nightly"
   },
   "license": "MIT",
   "repository": {
