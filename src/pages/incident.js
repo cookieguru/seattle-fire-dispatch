@@ -2,6 +2,7 @@
 const BasePage = require('./base.js');
 const dateFmt = require('../util/date.js');
 const GoogleInteractiveMap = require('../components/maps/google/interactive.js');
+const GoogleStaticMap = require('../components/maps/google/static.js');
 const IncidentDetailsService = require('../services/incident_details.js');
 const LocalGeocoder = require('../services/adapters/local.js');
 const strFmt = require('../util/string_formatter.js');
@@ -41,10 +42,19 @@ class IncidentPage extends BasePage {
 			top: 0, bottom: 0, left: 0, right: 0,
 		}).appendTo(page);
 
+		let height = Math.floor(screen.height / 3);
 		let ll = new LocalGeocoder().geocode(address);
-		new GoogleInteractiveMap({
-			top: 0, left: 0, right: 0, height: Math.floor(screen.height / 3),
-		}, ll.lat, ll.lon).appendTo(scrollView);
+		if(ll === null) {
+			new GoogleStaticMap({
+				top: 0, centerX: 0,
+				height: height,
+				width: screen.width,
+			}).setLocation(address).appendTo(scrollView);
+		} else {
+			new GoogleInteractiveMap({
+				top: 0, left: 0, right: 0, height: height,
+			}, ll.lat, ll.lon).appendTo(scrollView);
+		}
 
 		let dateText = new tabris.TextView({
 			top: ['prev()', 5], left: 5, right: 5,
