@@ -21,7 +21,6 @@ module.exports = {
 	 */
 	setOpacityOfHexString: function(string, opacity) {
 		if(/^#([0-9a-fA-F]{2})([0-9a-fA-F]{2})([0-9a-fA-F]{2})([0-9a-fA-F]{2})?$/.test(string)) {
-			console.log(opacity);
 			return 'rgba(' +
 				parseInt(RegExp.$1, 16) + ',' +
 				parseInt(RegExp.$2, 16) + ',' +
