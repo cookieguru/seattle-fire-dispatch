@@ -54,7 +54,7 @@ class IncidentPage extends BasePage {
 				top: 0, centerX: 0,
 				height: height,
 				width: screen.width,
-			}).setLocation(address).appendTo(scrollView);
+			}).setLocation(`${address}, Seattle, WA`).appendTo(scrollView);
 		} else {
 			new GoogleInteractiveMap({
 				top: 0, left: 0, right: 0, height: height,
