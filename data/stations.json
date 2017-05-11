@@ -1,0 +1,532 @@
+[
+	{
+		"id": "HQ",
+		"name": "Headquarters",
+		"address": "301 2nd Av S",
+		"lat": 47.5997869,
+		"lon": -122.3319776,
+		"apparatus": [
+			"DEP1",
+			"MAR5",
+			"MAR50",
+			"MIS6",
+			"PIO",
+			"SAFT2"
+		],
+		"reserve": [
+			"B225",
+			"SAFT22"
+		]
+	},
+	{
+		"id": 2,
+		"name": "Belltown",
+		"address": "2320 4th Av",
+		"lat": 47.5997869,
+		"lon": -122.3319776,
+		"apparatus": [
+			"A2",
+			"E2",
+			"E5",
+			"FRB5",
+			"L4"
+		],
+		"reserve": [
+			"A83",
+			"E90",
+			"E5432"
+		]
+	},
+	{
+		"id": 3,
+		"name": "Fishermen's Terminal",
+		"address": "1735 W Thurman St",
+		"lat": 47.6581388,
+		"lon": -122.3778247,
+		"apparatus": [
+			"E1",
+			"E3",
+			"FB1",
+			"FB3"
+		],
+		"reserve": [
+		]
+	},
+	{
+		"id": 5,
+		"name": "Waterfront",
+		"address": "925 Alaskan Way",
+		"lat": 47.6036411,
+		"lon": -122.338769,
+		"apparatus": [
+			"E4",
+			"FB2",
+			"FB4",
+			"FIREBOAT",
+			"PTRL4"
+		],
+		"reserve": [
+		]
+	},
+	{
+		"id": 6,
+		"name": "Central District",
+		"address": "405 M L King Jr Way S",
+		"lat": 47.5990006,
+		"lon": -122.2978198,
+		"apparatus": [
+			"E6",
+			"L3"
+		],
+		"reserve": [
+		]
+	},
+	{
+		"id": 8,
+		"name": "Queen Anne",
+		"address": "110 Lee St",
+		"lat": 47.631067,
+		"lon": -122.354921,
+		"apparatus": [
+			"E8",
+			"L6"
+		],
+		"reserve": [
+			"L5331"
+		]
+	},
+	{
+		"id": 9,
+		"name": "Fremont",
+		"address": "3829 Linden Av N",
+		"lat": 47.653555,
+		"lon": -122.348945,
+		"apparatus": [
+			"E9"
+		],
+		"reserve": [
+			"M5323"
+		]
+	},
+	{
+		"id": 10,
+		"name": "Pioneer Square",
+		"address": "400 S Washington St",
+		"lat": 47.6010846,
+		"lon": -122.3287236,
+		"apparatus": [
+			"A10",
+			"A5",
+			"E10",
+			"HAZ1",
+			"L1",
+			"MCI2",
+			"SQ10",
+			"STAF10"
+		],
+		"reserve": [
+			"E3525",
+			"HAZ80"
+		]
+	},
+	{
+		"id": 11,
+		"name": "Highland Park",
+		"address": "1514 SW Holden St",
+		"lat": 47.5337571,
+		"lon": -122.3547282,
+		"apparatus": [
+			"E11"
+		],
+		"reserve": [
+			"E5359",
+			"L1980"
+		]
+	},
+	{
+		"id": 13,
+		"name": "Beacon Hill",
+		"address": "3601 Beacon Av S",
+		"lat": 47.5717022,
+		"lon": -122.3087054,
+		"apparatus": [
+			"E13",
+			"B5"
+		],
+		"reserve": [
+		]
+	},
+	{
+		"id": 14,
+		"name": "SODO",
+		"address": "3224 4th Av S",
+		"lat": 47.5746053,
+		"lon": -122.3285144,
+		"apparatus": [
+			"A14",
+			"L7",
+			"R1",
+			"R14",
+			"SQ14"
+		],
+		"reserve": [
+			"S2141"
+		]
+	},
+	{
+		"id": 16,
+		"name": "Greenlake",
+		"address": "6846 Oswego Pl NE",
+		"lat": 47.6791242,
+		"lon": -122.3231897,
+		"apparatus": [
+			"E16"
+		],
+		"reserve": [
+		]
+	},
+	{
+		"id": 17,
+		"name": "University District",
+		"address": "1050 NE 50th St",
+		"lat": 47.6652767,
+		"lon": -122.3166777,
+		"apparatus": [
+			"B6",
+			"E17",
+			"L9",
+			"M16"
+		],
+		"reserve": [
+			"E5411",
+			"E5414",
+			"M5320"
+		]
+	},
+	{
+		"id": 18,
+		"name": "Ballard",
+		"address": "1521 NW Market St",
+		"lat": 47.6683676,
+		"lon": -122.3774267,
+		"apparatus": [
+			"B4",
+			"E18",
+			"L8",
+			"M18"
+		],
+		"reserve": [
+		]
+	},
+	{
+		"id": 20,
+		"name": "Interbay",
+		"address": "2800 15th Av W",
+		"lat": 47.6449225,
+		"lon": -122.3757863,
+		"apparatus": [
+			"E20"
+		],
+		"reserve": [
+			"L2536"
+		]
+	},
+	{
+		"id": 21,
+		"name": "Greenwood",
+		"address": "7304 Greenwood Av N",
+		"lat": 47.6820361,
+		"lon": -122.354978,
+		"apparatus": [
+			"E21",
+			"MCI1"
+		],
+		"reserve": [
+		]
+	},
+	{
+		"id": 22,
+		"name": "Montlake",
+		"address": "901 E Roanoke St",
+		"lat": 47.642959,
+		"lon": -122.320962,
+		"apparatus": [
+			"E22"
+		],
+		"reserve": [
+		]
+	},
+	{
+		"id": 24,
+		"name": "Bitter Lake",
+		"address": "401 N 130th St",
+		"lat": 47.723185,
+		"lon": -122.3536879,
+		"apparatus": [
+			"AIR240",
+			"E24"
+		],
+		"reserve": [
+		]
+	},
+	{
+		"id": 25,
+		"name": "Capitol Hill",
+		"address": "1300 E Pine St",
+		"lat": 47.6155588,
+		"lon": -122.3151463,
+		"apparatus": [
+			"A25",
+			"B2",
+			"COMVAN",
+			"E25",
+			"L10",
+			"MVU1",
+			"P25"
+		],
+		"reserve": [
+			"B22"
+		]
+	},
+	{
+		"id": 26,
+		"name": "South Park",
+		"address": "800 S Cloverdale St",
+		"lat": 47.5267089,
+		"lon": -122.322489,
+		"apparatus": [
+			"AIR260",
+			"E26"
+		],
+		"reserve": [
+		]
+	},
+	{
+		"id": 27,
+		"name": "Georgetown",
+		"address": "1000 S Myrtle St",
+		"lat": 47.5396544,
+		"lon": -122.3199481,
+		"apparatus": [
+			"DECON1",
+			"E27",
+			"REHAB1",
+			"USAR"
+		],
+		"reserve": [
+		]
+	},
+	{
+		"id": 28,
+		"name": "Rainier Valley",
+		"address": "5968 Rainier Av S",
+		"lat": 47.548458,
+		"lon": -122.2767948,
+		"apparatus": [
+			"E28",
+			"L12",
+			"M28"
+		],
+		"reserve": [
+			"E2413",
+			"E3526"
+		]
+	},
+	{
+		"id": 29,
+		"name": "Admiral District",
+		"address": "2139 Ferry Av SW",
+		"lat": 47.584379,
+		"lon": -122.388815,
+		"apparatus": [
+			"E29"
+		],
+		"reserve": [
+		]
+	},
+	{
+		"id": 30,
+		"name": "Mount Baker",
+		"address": "2931 S Mount Baker Blvd",
+		"lat": 47.5755736,
+		"lon": -122.2948148,
+		"apparatus": [
+			"E30",
+			"AIR9"
+		],
+		"reserve": [
+		]
+	},
+	{
+		"id": 31,
+		"name": "Northgate",
+		"address": "1319 N Northgate Way",
+		"lat": 47.7047682,
+		"lon": -122.3410919,
+		"apparatus": [
+			"E31",
+			"L5",
+			"M31"
+		],
+		"reserve": [
+			"E5403"
+		]
+	},
+	{
+		"id": 32,
+		"name": "West Seattle",
+		"address": "3715 SW Alaska St",
+		"lat": 47.5608271,
+		"lon": -122.3797577,
+		"apparatus": [
+			"B7",
+			"E32",
+			"L11"
+		],
+		"reserve": [
+			"L5347"
+		]
+	},
+	{
+		"id": 33,
+		"name": "Rainier Beach",
+		"address": "9645 Renton Av S",
+		"lat": 47.515922,
+		"lon": -122.268818,
+		"apparatus": [
+			"E33"
+		],
+		"reserve": [
+			"E5356"
+		]
+	},
+	{
+		"id": 34,
+		"name": "Madison Park",
+		"address": "633 32nd Av E",
+		"lat": 47.6259841,
+		"lon": -122.2913047,
+		"apparatus": [
+			"E34",
+			"HOSE34"
+		],
+		"reserve": [
+			"H317"
+		]
+	},
+	{
+		"id": 35,
+		"name": "Crown Hill",
+		"address": "8729 15th Av NW",
+		"lat": 47.6933082,
+		"lon": -122.3771042,
+		"apparatus": [
+			"E35",
+			"HOSE18"
+		],
+		"reserve": [
+			"L5341"
+		]
+	},
+	{
+		"id": 36,
+		"name": "Harbor Island",
+		"address": "3600 23rd Av SW",
+		"lat": 47.5712145,
+		"lon": -122.3618531,
+		"apparatus": [
+			"E36",
+			"MRN1"
+		],
+		"reserve": [
+			"MRN80"
+		]
+	},
+	{
+		"id": 37,
+		"name": "High Point",
+		"address": "7700 35th Av SW",
+		"lat": 47.533584,
+		"lon": -122.376201,
+		"apparatus": [
+			"E37",
+			"M32"
+		],
+		"reserve": [
+			"E5408"
+		]
+	},
+	{
+		"id": 38,
+		"name": "Laurelhurst",
+		"address": "4004 NE 55th St",
+		"lat": 47.6687476,
+		"lon": -122.2845256,
+		"apparatus": [
+			"E38"
+		],
+		"reserve": [
+			"E5406"
+		]
+	},
+	{
+		"id": 39,
+		"name": "Lake City",
+		"address": "2806 NE 127th St",
+		"lat": 47.721285,
+		"lon": -122.2973707,
+		"apparatus": [
+			"E39",
+			"MAB1"
+		],
+		"reserve": [
+			"E2421"
+		]
+	},
+	{
+		"id": 40,
+		"name": "Wedgwood",
+		"address": "9401 35th Av NE",
+		"lat": 47.6967833,
+		"lon": -122.290942,
+		"apparatus": [
+			"E40",
+			"SQ40"
+		],
+		"reserve": [
+		]
+	},
+	{
+		"id": 41,
+		"name": "Magnolia",
+		"address": "2416 34th Av W",
+		"lat": 47.6401238,
+		"lon": -122.4005044,
+		"apparatus": [
+			"E41"
+		],
+		"reserve": [
+		]
+	},
+	{
+		"id": "HMC",
+		"name": "Harborview Medical Center",
+		"address": "325 9th Av",
+		"lat": 47.6038212,
+		"lon": -122.3241757,
+		"apparatus": [
+			"B3",
+			"M1",
+			"M10",
+			"M44",
+			"M45",
+			"M46"
+		],
+		"reserve": [
+			"M5",
+			"M84",
+			"M2863",
+			"M3083"
+		]
+	}
+]

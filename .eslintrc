@@ -1,0 +1,40 @@
+{
+  "extends": "eslint:recommended",
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module"
+  },
+  "env": {
+    "node": true,
+    "es6": true
+  },
+  "globals": {
+    "tabris": false
+  },
+  "rules": {
+    "array-bracket-spacing": ["error", "never"],
+    "arrow-body-style": ["error", "as-needed"],
+    "comma-dangle": ["error", "always-multiline"],
+    "curly": ["error", "all"],
+    "eol-last": "error",
+    "eqeqeq": ["error", "allow-null"],
+    "indent": ["error", "tab"],
+    "linebreak-style": ["error", "unix"],
+    "max-len": ["error", 120, 2, {"ignoreUrls": true, "ignorePattern": "\\/\\^"}],
+    "no-console": "off",
+    "no-control-regex": "off",
+    "no-empty": "off",
+    "no-trailing-spaces": "error",
+    "no-var": "error",
+    "no-with": "error",
+    "object-curly-spacing": ["error", "never"],
+    "prefer-arrow-callback": "error",
+    "quote-props": ["error", "consistent-as-needed"],
+    "quotes": ["error", "single", "avoid-escape"],
+    "semi": "error",
+    "space-before-blocks": "error",
+    "space-in-parens": ["error", "never"],
+    "space-infix-ops": "error",
+    "space-unary-ops": "error"
+  }
+}

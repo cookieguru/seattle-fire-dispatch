@@ -1,0 +1,21 @@
+{
+  "name": "seattle-fire-dispatch",
+  "description": "Android app to display Seattle Fire Department's Real-Time 911 Dispatch",
+  "main": "src/app.js",
+  "dependencies": {
+    "cheerio": "^0.22.0",
+    "md5": "^2.2.1",
+    "moment": ">=2.14",
+    "moment-timezone": "^0.5.11",
+    "tabris": "nightly",
+    "tabris-js-node": "^0.1.0"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cookieguru/seattle-fire-dispatch.git"
+  },
+  "devDependencies": {
+    "eslint": "^3.7.1"
+  }
+}
