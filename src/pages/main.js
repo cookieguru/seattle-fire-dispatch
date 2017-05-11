@@ -103,6 +103,7 @@ class MainPage extends BasePage {
 		}).then(() => {
 			this.view.refreshIndicator = false;
 			this.view.refreshMessage = '';
+			this.view.reveal(0);
 		});
 	}
 }
