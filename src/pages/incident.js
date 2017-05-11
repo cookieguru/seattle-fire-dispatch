@@ -32,7 +32,12 @@ class IncidentPage extends BasePage {
 		}).appendTo(this.navigationView);
 
 		page.on('disappear', () => {
-			action.visible = false;
+			if(!action.isDisposed()) {
+				action.visible = false;
+			}
+		});
+		page.on('appear', () => {
+			action.visible = true;
 		});
 		page.on('dispose', () => {
 			action.dispose();
