@@ -1,4 +1,3 @@
-/* global screen, cordova */
 const BasePage = require('./base.js');
 const colorUtils = require('../util/colors.js');
 const StationsService = require('../services/fetch_stations.js');

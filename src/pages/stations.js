@@ -1,4 +1,3 @@
-/* global screen */
 const BasePage = require('./base.js');
 const StationPage = require('./station.js');
 const {MARGIN} = require('../constants.js');

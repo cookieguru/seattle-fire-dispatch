@@ -1,5 +1,3 @@
-/* global fetch */
-
 class StationsService {
 	/**
 	 * Gets photo information

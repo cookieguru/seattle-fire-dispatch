@@ -1,5 +1,3 @@
-/* global screen */
-
 const AboutPage = require('./pages/about.js');
 const BorderedCell = require('./components/bordered_cell.js');
 const MainPage = require('./pages/main.js');

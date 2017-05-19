@@ -1,4 +1,3 @@
-/* global cordova */
 const BasePage = require('./base.js');
 const colorUtils = require('../util/colors');
 

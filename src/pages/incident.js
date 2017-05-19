@@ -1,4 +1,3 @@
-/* global screen */
 const BasePage = require('./base.js');
 const dateFmt = require('../util/date.js');
 const GoogleInteractiveMap = require('../components/maps/google/interactive.js');

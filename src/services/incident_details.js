@@ -1,4 +1,3 @@
-/* global fetch */
 class IncidentDetailsService {
 	constructor() {
 		this._cache = {};

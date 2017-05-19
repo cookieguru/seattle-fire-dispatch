@@ -1,4 +1,3 @@
-/* global fetch */
 const Incident = require('../models/incident.js');
 
 class IncidentsService {
