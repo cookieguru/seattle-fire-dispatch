@@ -9,7 +9,7 @@ class LocalGeocoder {
 	 */
 	geocode(address) {
 		address = address.toLowerCase();
-		let hash = md5(address).substr(0, 3);
+		let hash = md5(address).substr(0, 2);
 		try {
 			let bucket = require(`../../../geo_database/${hash}.json`);
 			if(bucket[address]) {
