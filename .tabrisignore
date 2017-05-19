@@ -1,1 +1,4 @@
+.eslintignore
+.eslintrc
+.gitignore
 test
