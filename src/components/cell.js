@@ -1,7 +1,11 @@
 class Cell extends tabris.Composite {
 	constructor() {
 		super();
-		this.highlightOnTouch = true;
+		let highlight = true;
+		if(device.platform === 'Android' && device.version < 23) {
+			highlight = false;
+		}
+		this.highlightOnTouch = highlight;
 	}
 }
 
