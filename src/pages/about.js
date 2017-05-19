@@ -44,6 +44,12 @@ class AboutPage extends BasePage {
 		}).appendTo(scrollView);
 
 		new tabris.TextView({
+			top: ['prev()', constants.MARGIN], left: 0, right: 0,
+			markupEnabled: true,
+			text: 'Special thanks to Max Steinmetz for the app icon',
+		}).appendTo(scrollView);
+
+		new tabris.TextView({
 			top: ['prev()', constants.MARGIN * 5], left: 0, right: 0,
 			font: '10px Roboto',
 			text: ['The data made available here has been modified for use from its original source, which is the ',
