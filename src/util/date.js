@@ -4,10 +4,19 @@ const moment = require('moment-timezone');
 const MOMENT_SFD_DATE_FORMAT = 'M/D/Y';
 let deviceLang = tabris.device.language.replace(/-.*/, '');
 
+/**
+ * Returns today's date in Seattle time in the format expected by SFD
+ * @return {string}
+ */
 function getTodayString() {
 	return moment.tz('America/Los_Angeles').format(MOMENT_SFD_DATE_FORMAT);
 }
 
+/**
+ * Formats a date to the device's locale
+ * @param {Date|number} dt A Date or a timestamp to format
+ * @return {Promise<string>}
+ */
 function formatDate(dt) {
 	if(!(dt instanceof Date)) {
 		dt = new Date(dt);
@@ -20,10 +29,11 @@ function formatDate(dt) {
 				formatLength: 'medium',
 				selector: 'date and time',
 			});
+		} else {
+			let fmt = moment.localeData(deviceLang).longDateFormat('LL');
+			fmt += ' ' + moment.localeData(deviceLang).longDateFormat('LTS');
+			resolve(moment(dt).format(fmt));
 		}
-		let fmt = moment.localeData(deviceLang).longDateFormat('LL');
-		fmt += ' ' + moment.localeData(deviceLang).longDateFormat('LTS');
-		resolve(moment(dt).format(fmt));
 	});
 }
 
@@ -44,9 +54,10 @@ function formatTime(dt) {
 				formatLength: 'short',
 				selector: 'time',
 			});
+		} else {
+			let fmt = moment.localeData(deviceLang).longDateFormat('LT');
+			resolve(moment(dt).format(fmt));
 		}
-		let fmt = moment.localeData(deviceLang).longDateFormat('LT');
-		resolve(moment(dt).format(fmt));
 	});
 }
 
