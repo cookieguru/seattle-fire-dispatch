@@ -38,14 +38,14 @@ class IncidentDetailsService {
 	 * @private
 	 */
 	_parser(text) {
-		//$('table, td').not('td[width="25%"]').removeAttr('width');
+		text = text.replace(/(<td .*?)width="\d+"(.*?>)/g, '$1$2');
 		text = text.replace(/(<t(?:d|able) .*?)height="?\d+%?"?(.*?>)/g, '$1$2');
 		text = text.replace(/(<table .*?)width="?\d+%?"?(.*?>)/g, '$1$2');
 		text = text.replace(/(<td .*?)height="?\d+%?"?(.*?)>/g, '$1$2');
 		text = text.replace(/<td width="35%">[\S\s]*?<\/td>/, '');
 		text = text.replace(/<script[\S\s]*?<\/script>/g, '');
 		text = text.replace(/<a [\S\s]*?<\/a>/g, '');
-		text = text.replace('</head>', '<style type="text/css">table table{width:100%}</style></head>');
+		text = text.replace('</head>', '<style type="text/css">table table{width:100%}p{margin:0}</style></head>');
 		return text.replace('</head>', '<meta name="viewport" content="width=device-width"></head>');
 	}
 }
