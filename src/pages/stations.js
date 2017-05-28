@@ -4,6 +4,7 @@ const {MARGIN} = require('../constants.js');
 
 class StationsPage extends BasePage {
 	factory() {
+		/** @type {Array} */
 		const stations = require('../../data/stations.json');
 		let page = new tabris.Page({
 			title: 'Stations',

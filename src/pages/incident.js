@@ -8,6 +8,14 @@ const strFmt = require('../util/string_formatter.js');
 const WebViewPage = require('./webview.js');
 
 class IncidentPage extends BasePage {
+	/**
+	 * @param {string} incidentId
+	 * @param {Date} timestamp
+	 * @param {string} type
+	 * @param {string} address
+	 * @param {string} level
+	 * @param {Array} units
+	 */
 	factory(incidentId, timestamp, type, address, level, units) {
 		let page = new tabris.Page({
 			title: incidentId,

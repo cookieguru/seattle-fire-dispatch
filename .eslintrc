@@ -10,6 +10,8 @@
   },
   "globals": {
     "cordova": false,
+    "device": false,
+    "esmaps": false,
     "fetch": false,
     "screen": false,
     "tabris": false
@@ -37,6 +39,7 @@
     "quotes": ["error", "single", "avoid-escape"],
     "semi": "error",
     "semi-spacing": ["error", {"before": false, "after": true}],
+    "no-mixed-spaces-and-tabs": ["error", "smart-tabs"],
     "space-before-blocks": "error",
     "space-in-parens": ["error", "never"],
     "space-infix-ops": "error",

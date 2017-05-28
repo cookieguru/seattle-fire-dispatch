@@ -18,6 +18,7 @@ class MainPage extends BasePage {
 			title: 'Seattle Fire',
 		});
 
+		/** @type {Incident[]} */
 		this.incidents = [];
 
 		this.view = new tabris.CollectionView({

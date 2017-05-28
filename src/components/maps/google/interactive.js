@@ -1,6 +1,10 @@
-/* global esmaps */
-
 class GoogleInteractiveMap extends esmaps.Map {
+	/**
+	 * @param {object} options
+	 * @param {number} lat
+	 * @param {number} lon
+	 * @return {GoogleInteractiveMap}
+	 */
 	constructor(options, lat, lon) {
 		super(options);
 		this.on('ready', () => {

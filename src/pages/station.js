@@ -107,6 +107,7 @@ class StationPage extends BasePage {
 		let stationsService = new StationsService();
 		stationsService.getPhotoInformation().then(station_photos => {
 			if(station_photos[station.id]) {
+				/** @type {{author:string,title:string,license:string}} */
 				let photo = station_photos[station.id];
 				credit.text = `"${photo.title}" by ${photo.author}`;
 				if(photo.license) {
