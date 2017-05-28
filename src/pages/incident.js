@@ -47,18 +47,21 @@ class IncidentPage extends BasePage {
 		}).appendTo(page);
 
 		let height = Math.floor(screen.height / 3);
-		let ll = new LocalGeocoder().geocode(address);
-		if(ll === null) {
+		let mapContainer = new tabris.Composite({
+			top: 0, left: 0, right: 0,
+			height: height,
+		}).appendTo(scrollView);
+		LocalGeocoder.geocode(address).then(ll => {
+			new GoogleInteractiveMap({
+				top: 0, left: 0, right: 0, height: height,
+			}, ll.lat, ll.lon).appendTo(mapContainer);
+		}).catch(() => {
 			new GoogleStaticMap({
 				top: 0, centerX: 0,
 				height: height,
 				width: screen.width,
-			}).setLocation(`${address}, Seattle, WA`).appendTo(scrollView);
-		} else {
-			new GoogleInteractiveMap({
-				top: 0, left: 0, right: 0, height: height,
-			}, ll.lat, ll.lon).appendTo(scrollView);
-		}
+			}).setLocation(`${address}, Seattle, WA`).appendTo(mapContainer);
+		});
 
 		let dateText = new tabris.TextView({
 			top: ['prev()', 5], left: 5, right: 5,

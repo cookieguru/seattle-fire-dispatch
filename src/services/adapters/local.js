@@ -1,24 +1,26 @@
-let LatLon = require('../../models/latlon.js');
-let md5 = require('md5');
+const LatLon = require('../../models/latlon.js');
+const md5 = require('md5');
 
 class LocalGeocoder {
-	//noinspection JSMethodCanBeStatic
 	/**
 	 * @param {string} address
-	 * @return {LatLon|null}
+	 * @return {Promise<LatLon>,<string>}
 	 */
-	geocode(address) {
+	static geocode(address) {
 		address = address.toLowerCase();
-		let hash = md5(address).substr(0, 2);
-		try {
-			let bucket = require(`../../../geo_database/${hash}.json`);
-			if(bucket[address]) {
-				return new LatLon(bucket[address][0], bucket[address][1]);
+		/** @type {string} */
+		let hash = md5(address);
+		hash = hash.substr(0, 2);
+		return new Promise((resolve, reject) => {
+			try {
+				const bucket = require(`../../../geo_database/${hash}.json`);
+				if(bucket[address]) {
+					resolve(new LatLon(bucket[address][0], bucket[address][1]));
+				}
+			} catch(e) {
+				reject(e.toString());
 			}
-		} catch(e) {
-			return null;
-		}
-		return null;
+		});
 	}
 }
 
