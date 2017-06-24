@@ -48,7 +48,7 @@ new tabris.CollectionView({
 	let page;
 	if(name === 'Stations') {
 		page = new StationsPage(navigationView).factory();
-	} else if(name === 'Twitter') {
+	} else if(name === 'SFD Twitter') {
 		page = new TwitterPage(navigationView).factory();
 	} else if(name === 'About') {
 		page = new AboutPage(navigationView).factory();
