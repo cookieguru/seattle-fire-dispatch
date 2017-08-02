@@ -107,18 +107,16 @@ class StationPage extends BasePage {
 		let stationsService = new StationsService();
 		stationsService.getPhotoInformation().then(station_photos => {
 			if(station_photos[station.id]) {
-				/** @type {{author:string,title:string,license:string}} */
+				/** @type {{author:string,title:string,license:string,link:string}} */
 				let photo = station_photos[station.id];
 				credit.text = `"${photo.title}" by ${photo.author}`;
 				if(photo.license) {
 					credit.text += `, ${photo.license}`;
 				}
+				credit.on('tap', () => {
+					tabris.app.launch(photo.link);
+				});
 			}
-			credit.on('tap', () => {
-				if(cordova.InAppBrowser) {
-					cordova.InAppBrowser.open('', '_system');
-				}
-			});
 		});
 		new tabris.TextView({
 			top: ['prev()', MARGIN],
@@ -141,10 +139,7 @@ class StationPage extends BasePage {
 					font: '12px',
 					text: 'MAP',
 				}).on('tap', () => {
-					let url = 'http://maps.google.com/maps?q=' + encodeURIComponent(station.address + ', Seattle, WA');
-					if(cordova.InAppBrowser) {
-						cordova.InAppBrowser.open(url, '_system');
-					}
+					tabris.app.launch('http://maps.google.com/maps?q=' + encodeURIComponent(station.address + ', Seattle, WA'));
 				})
 			)
 		).appendTo(contentComposite);

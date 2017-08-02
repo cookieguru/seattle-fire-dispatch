@@ -45,10 +45,8 @@ class TwitterPage extends BasePage {
 			if(event.url.substr(0, 4) !== 'http') {
 				return;
 			}
-			if(cordova.InAppBrowser) {
-				cordova.InAppBrowser.open(event.url, '_system');
-				event.preventDefault();
-			}
+			tabris.app.launch(event.url);
+			event.preventDefault();
 		}).appendTo(page);
 
 		let backNav = function(event) {

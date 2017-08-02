@@ -29,18 +29,14 @@ class AboutPage extends BasePage {
 			markupEnabled: true,
 			text: 'Bugs?  Comments?  Suggestions?  <a href="#">apps@Tim-Bond.com</a>',
 		}).on('tap', () => {
-			if(cordova.InAppBrowser) {
-				cordova.InAppBrowser.open('mailto:apps@tim-bond.com?subject=Seattle+Fire+Dispatch', '_system');
-			}
+			tabris.app.launch('mailto:apps@tim-bond.com?subject=Seattle+Fire+Dispatch');
 		}).appendTo(scrollView);
 
 		new tabris.Button({
 			top: ['prev()', constants.MARGIN], left: 0, right: 0,
 			text: 'Learn more about this app',
 		}).on('select', () => {
-			if(cordova.InAppBrowser) {
-				cordova.InAppBrowser.open('https://github.com/cookieguru/seattle-fire-dispatch/wiki/About', '_system');
-			}
+			tabris.app.launch('https://github.com/cookieguru/seattle-fire-dispatch/wiki/About');
 		}).appendTo(scrollView);
 
 		new tabris.TextView({

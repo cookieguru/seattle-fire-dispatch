@@ -7,7 +7,6 @@
 	<preference name="EnableDeveloperConsole" value="$IS_DEBUG" />
 
 	<plugin name="cordova-plugin-globalization" version="1.0.3" />
-	<plugin name="cordova-plugin-inappbrowser" version="1.2.0" />
 	<plugin name="tabris-plugin-maps" spec="https://github.com/eclipsesource/tabris-plugin-maps.git">
 		<variable name="ANDROID_API_KEY" value="AIzaSyBp70WjDhXcwach9hX1y2jZsiO7asKfx_w" />
 	</plugin>
