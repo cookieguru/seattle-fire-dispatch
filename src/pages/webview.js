@@ -1,17 +1,23 @@
 const BasePage = require('./base.js');
 
 class WebViewPage extends BasePage {
-	//noinspection JSMethodCanBeStatic
-	factory(title, html) {
+	factory(title) {
 		let page = new tabris.Page({
 			title: title,
 		});
-		new tabris.WebView({
+		this.wv = new tabris.WebView({
 			top: 0, bottom: 0, left: 0, right: 0,
-			html: html,
 		}).appendTo(page);
 
 		return page;
+	}
+
+	set html(html) {
+		this.wv.html = html;
+	}
+
+	set url(url) {
+		this.wv.url = url;
 	}
 }
 
