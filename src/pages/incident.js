@@ -50,15 +50,11 @@ class IncidentPage extends BasePage {
 			action.dispose();
 		});
 
-		let scrollView = new tabris.ScrollView({
-			top: 0, bottom: 0, left: 0, right: 0,
-		}).appendTo(page);
-
 		let height = Math.floor(screen.height / 3);
 		let mapContainer = new tabris.Composite({
 			top: 0, left: 0, right: 0,
 			height: height,
-		}).appendTo(scrollView);
+		}).appendTo(page);
 		LocalGeocoder.geocode(address).then(ll => {
 			new GoogleInteractiveMap({
 				top: 0, left: 0, right: 0, height: height,
@@ -70,6 +66,10 @@ class IncidentPage extends BasePage {
 				width: screen.width,
 			}).setLocation(`${address}, Seattle, WA`).appendTo(mapContainer);
 		});
+
+		let scrollView = new tabris.ScrollView({
+			top: ['prev()', 0], bottom: 0, left: 0, right: 0,
+		}).appendTo(page);
 
 		let dateText = new tabris.TextView({
 			top: ['prev()', 5], left: 5, right: 5,
