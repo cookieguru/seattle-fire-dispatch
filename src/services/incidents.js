@@ -21,6 +21,9 @@ class IncidentsService {
 				if(text.indexOf('Sorry, no Record Found') >= 0) {
 					reject(`No incidents yet for ${date}`);
 				}
+				if(text.match(/Selected date .* is not on file/)) {
+					reject(`No incidents for ${date}`);
+				}
 				//eslint-disable-next-line max-len
 				let re = /<tr id.*?>[\S\s]*?<td class="?(.*?)".*?>(.*?)<\/td>[\S\s]*?<td.*?>(.*?)<\/td>[\S\s]*?<td.*?>(.*?)<\/td>[\S\s]*?<td.*?>(.*?)<\/td>[\S\s]*?<td.*?>(.*?)<\/td>[\S\s]*?<td.*?>(.*?)<\/td>[\S\s]*?<\/tr>/g;
 				let m;
