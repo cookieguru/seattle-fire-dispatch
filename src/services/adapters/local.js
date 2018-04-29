@@ -16,6 +16,8 @@ class LocalGeocoder {
 				const bucket = require(`../../../geo_database/${hash}.json`);
 				if(bucket[address]) {
 					resolve(new LatLon(bucket[address][0], bucket[address][1]));
+				} else {
+					reject('Not geocoded');
 				}
 			} catch(e) {
 				reject(e.toString());
