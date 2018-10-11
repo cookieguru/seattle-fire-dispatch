@@ -29,12 +29,12 @@ class IncidentPage extends BasePage {
 			},
 		}).on('select', () => {
 			let incdDetSvc = new IncidentDetailsService();
-			let wvPage = new WebViewPage(this.navigationView).factory('Incident Report Detail');
-			wvPage.appendTo(this.navigationView);
+			let wv = new WebViewPage(this.navigationView);
+			wv.factory('Incident Report Detail').appendTo(this.navigationView);
 			incdDetSvc.getIncidentDetails(incidentId).then(html => {
-				wvPage.html = html;
+				wv.html = html;
 			}).catch(() => {
-				wvPage.url = incdDetSvc.getIncidentDetailsURL(incidentId);
+				wv.url = incdDetSvc.getIncidentDetailsURL(incidentId);
 			});
 		}).appendTo(this.navigationView);
 
