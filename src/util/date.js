@@ -29,11 +29,10 @@ function formatDate(dt) {
 				formatLength: 'medium',
 				selector: 'date and time',
 			});
-		} else {
-			let fmt = moment.localeData(deviceLang).longDateFormat('LL');
-			fmt += ' ' + moment.localeData(deviceLang).longDateFormat('LTS');
-			resolve(moment(dt).format(fmt));
 		}
+		let fmt = moment.localeData(deviceLang).longDateFormat('LL');
+		fmt += ' ' + moment.localeData(deviceLang).longDateFormat('LTS');
+		resolve(moment(dt).format(fmt));
 	});
 }
 
