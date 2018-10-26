@@ -27,6 +27,7 @@ class StationPage extends BasePage {
 			this.navigationView.toolbarVisible = true;
 		});
 
+		//TODO: https://raw.githubusercontent.com/eclipsesource/tabris-js/master/examples/parallax/parallax.js
 		let scrollView = new tabris.ScrollView({
 			left: 0, right: 0, top: 0, bottom: 0,
 		}).appendTo(page);
@@ -114,6 +115,7 @@ class StationPage extends BasePage {
 					credit.text += `, ${photo.license}`;
 				}
 				credit.on('tap', () => {
+					// noinspection JSIgnoredPromiseFromCall
 					tabris.app.launch(photo.link);
 				});
 			}
@@ -139,6 +141,7 @@ class StationPage extends BasePage {
 					font: '12px',
 					text: 'MAP',
 				}).on('tap', () => {
+					//noinspection JSIgnoredPromiseFromCall
 					tabris.app.launch('http://maps.google.com/maps?q=' + encodeURIComponent(station.address + ', Seattle, WA'));
 				})
 			)

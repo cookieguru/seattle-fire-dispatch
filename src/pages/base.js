@@ -1,8 +1,9 @@
 class BasePage {
 	/**
-	 * @param {tabris.NavigationView} navigationView
+	 * @param {NavigationView} navigationView
 	 */
 	constructor(navigationView) {
+		/** @type {NavigationView|Composite} */
 		this.navigationView = navigationView;
 	}
 }

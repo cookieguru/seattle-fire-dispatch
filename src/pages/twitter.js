@@ -13,6 +13,7 @@ class TwitterPage extends BasePage {
 			centerY: 0,
 		}).appendTo(page);
 
+		// noinspection JSUnresolvedLibraryURL
 		let webView = new tabris.WebView({
 			left: 0,
 			top: 0,
@@ -45,6 +46,7 @@ class TwitterPage extends BasePage {
 			if(event.url.substr(0, 4) !== 'http') {
 				return;
 			}
+			// noinspection JSIgnoredPromiseFromCall
 			tabris.app.launch(event.url);
 			event.preventDefault();
 		}).appendTo(page);

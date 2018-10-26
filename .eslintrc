@@ -9,10 +9,12 @@
     "es6": true
   },
   "globals": {
+    "Connection": false,
     "cordova": false,
     "device": false,
     "esmaps": false,
     "fetch": false,
+    "navigator": false,
     "screen": false,
     "tabris": false
   },

@@ -29,6 +29,7 @@ class AboutPage extends BasePage {
 			markupEnabled: true,
 			text: 'Bugs?  Comments?  Suggestions?  <a href="#">apps@Tim-Bond.com</a>',
 		}).on('tap', () => {
+			// noinspection JSIgnoredPromiseFromCall
 			tabris.app.launch('mailto:apps@tim-bond.com?subject=Seattle+Fire+Dispatch');
 		}).appendTo(scrollView);
 
@@ -36,6 +37,7 @@ class AboutPage extends BasePage {
 			top: ['prev()', constants.MARGIN], left: 0, right: 0,
 			text: 'Learn more about this app',
 		}).on('select', () => {
+			// noinspection JSIgnoredPromiseFromCall
 			tabris.app.launch('https://github.com/cookieguru/seattle-fire-dispatch/wiki/About');
 		}).appendTo(scrollView);
 

@@ -1,4 +1,3 @@
-/*global navigator */
 const moment = require('moment-timezone');
 
 const MOMENT_SFD_DATE_FORMAT = 'M/D/Y';
