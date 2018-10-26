@@ -1,6 +1,6 @@
 const BasePage = require('./base.js');
 const StationPage = require('./station.js');
-const {MARGIN} = require('../constants.js');
+const {MARGIN} = require('../constants.json');
 
 class StationsPage extends BasePage {
 	factory() {

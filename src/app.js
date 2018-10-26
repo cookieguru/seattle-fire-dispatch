@@ -3,7 +3,7 @@ const BorderedCell = require('./components/bordered_cell.js');
 const MainPage = require('./pages/main.js');
 const StationsPage = require('./pages/stations.js');
 const TwitterPage = require('./pages/twitter.js');
-const {COLORS} = require('./constants.js');
+const {COLORS} = require('./constants.json');
 
 let navigationView = new tabris.NavigationView({
 	left: 0, top: 0, right: 0, bottom: 0,

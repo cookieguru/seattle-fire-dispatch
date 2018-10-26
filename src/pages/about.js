@@ -1,5 +1,5 @@
 const BasePage = require('./base.js');
-const constants = require('../constants.js');
+const {MARGIN} = require('../constants.json');
 
 class AboutPage extends BasePage {
 	factory() {
@@ -8,10 +8,10 @@ class AboutPage extends BasePage {
 		});
 
 		let scrollView = new tabris.ScrollView({
-			top: constants.MARGIN,
-			bottom: constants.MARGIN,
-			left: constants.MARGIN,
-			right: constants.MARGIN,
+			top: MARGIN,
+			bottom: MARGIN,
+			left: MARGIN,
+			right: MARGIN,
 		}).appendTo(page);
 
 		new tabris.TextView({
@@ -20,12 +20,12 @@ class AboutPage extends BasePage {
 		}).appendTo(scrollView);
 
 		new tabris.TextView({
-			top: ['prev()', constants.MARGIN], left: 0, right: 0,
+			top: ['prev()', MARGIN], left: 0, right: 0,
 			text: '\u00A9 2017 Tim Bond',
 		}).appendTo(scrollView);
 
 		new tabris.TextView({
-			top: ['prev()', constants.MARGIN], left: 0, right: 0,
+			top: ['prev()', MARGIN], left: 0, right: 0,
 			markupEnabled: true,
 			text: 'Bugs?  Comments?  Suggestions?  <a href="#">apps@Tim-Bond.com</a>',
 		}).on('tap', () => {
@@ -34,7 +34,7 @@ class AboutPage extends BasePage {
 		}).appendTo(scrollView);
 
 		new tabris.Button({
-			top: ['prev()', constants.MARGIN], left: 0, right: 0,
+			top: ['prev()', MARGIN], left: 0, right: 0,
 			text: 'Learn more about this app',
 		}).on('select', () => {
 			// noinspection JSIgnoredPromiseFromCall
@@ -42,13 +42,13 @@ class AboutPage extends BasePage {
 		}).appendTo(scrollView);
 
 		new tabris.TextView({
-			top: ['prev()', constants.MARGIN], left: 0, right: 0,
+			top: ['prev()', MARGIN], left: 0, right: 0,
 			markupEnabled: true,
 			text: 'Special thanks to Max Steinmetz for the app icon',
 		}).appendTo(scrollView);
 
 		new tabris.TextView({
-			top: ['prev()', constants.MARGIN * 5], left: 0, right: 0,
+			top: ['prev()', MARGIN * 5], left: 0, right: 0,
 			font: '10px Roboto',
 			text: ['The data made available here has been modified for use from its original source, which is the ',
 				'City of Seattle. Neither the City of Seattle nor the Office of the Chief Technology Officer (OCTO) ',

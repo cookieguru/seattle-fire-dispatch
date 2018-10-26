@@ -5,6 +5,7 @@ const dateUtil = require('../util/date.js');
 const IncidentPage = require('./incident.js');
 const IncidentsService = require('../services/incidents.js');
 const strFmt = require('../util/string_formatter.js');
+const {COLORS} = require('../constants.json');
 
 class MainPage extends BasePage {
 	constructor(navigationView) {
@@ -56,7 +57,7 @@ class MainPage extends BasePage {
 				dateFmt.formatTime(incident.date).then((time) => {
 					cell.children('#time')[0].set({
 						text: time,
-						textColor: incident.active ? 'green' : 'initial',
+						textColor: incident.active ? COLORS.ACTIVE : 'initial',
 					});
 				});
 				cell.children('#type')[0].text = strFmt.incident_type(incident.type);

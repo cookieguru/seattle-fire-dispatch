@@ -1,0 +1,9 @@
+{
+	"BORDER_COLOR": "#E5E5E5",
+	"COLORS": {
+		"RED": "#DB1F26",
+		"ACTIVE": "#009933"
+	},
+	"GEOCODER_TIMEOUT": 4000,
+	"MARGIN": 15
+}
