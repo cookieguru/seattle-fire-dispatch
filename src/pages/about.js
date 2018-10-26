@@ -38,7 +38,7 @@ class AboutPage extends BasePage {
 			text: 'Learn more about this app',
 		}).on('select', () => {
 			// noinspection JSIgnoredPromiseFromCall
-			tabris.app.launch('https://github.com/cookieguru/seattle-fire-dispatch/wiki/About');
+			tabris.app.launch('https://github.com/cookieguru/seattle-fire-dispatch/wiki');
 		}).appendTo(scrollView);
 
 		new tabris.TextView({
