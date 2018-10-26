@@ -72,15 +72,15 @@ class IncidentPage extends BasePage {
 		}).appendTo(page);
 
 		let dateText = new tabris.TextView({
-			top: ['prev()', 5], left: 5, right: 5,
+			top: ['prev()', 16], left: 16, right: 16,
 		}).appendTo(scrollView);
 		dateFmt.formatDate(timestamp).then((string) => {
 			dateText.text = string;
 		});
 		let typeText = new tabris.TextView({
 			top: ['prev()', 5],
-			left: 5,
-			right: 5,
+			left: 16,
+			right: 16,
 			text: strFmt.incident_type(type),
 		}).appendTo(scrollView);
 		let description = strFmt.incident_description(type);
@@ -98,21 +98,22 @@ class IncidentPage extends BasePage {
 		}
 		new tabris.TextView({
 			top: ['prev()', 5],
-			left: 5,
-			right: 5,
+			left: 16,
+			right: 16,
 			text: address,
 		}).appendTo(scrollView);
 		if(level !== null) {
 			new tabris.TextView({
 				top: ['prev()', 5],
-				left: 5,
-				right: 5,
+				left: 16,
+				right: 16,
 				text: 'Alarm level ' + level,
 			}).appendTo(scrollView);
 		}
 
-		let tabFolder = new tabris.TabFolder({
-			left: 5, top: ['prev()', 5], right: 5, bottom: 5,
+		//Only using this component for the header styling
+		new tabris.TabFolder({
+			left: 16, top: ['prev()', 16], right: 16,
 			paging: true,
 		}).appendTo(scrollView);
 
@@ -122,10 +123,15 @@ class IncidentPage extends BasePage {
 
 		for(let i in units) {
 			new tabris.TextView({
-				left: 0, top: ['prev()', 5], right: 0,
+				left: 16, top: ['prev()', 8], right: 16,
 				text: strFmt.unit(units[i]),
 			}).appendTo(tab);
 		}
+
+		//Bottom "margin"
+		new tabris.Composite({
+			top: ['prev()', 16],
+		}).appendTo(scrollView);
 
 		page.apply({
 			TextView: {font: '18px Roboto'},

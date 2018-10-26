@@ -24,30 +24,35 @@ class MainPage extends BasePage {
 
 		this.view = new tabris.CollectionView({
 			left: 0, top: 0, right: 0, bottom: 0,
-			cellHeight: 68,
+			cellHeight: 'auto',
 			refreshEnabled: true,
 			createCell: () => {
 				let cell = new BorderedCell();
 
 				new tabris.TextView({
-					top: 2, right: 6,
+					top: 12, right: 16,
 					id: 'time',
-					font: 'black 16px',
+					font: 'black 18px',
 				}).appendTo(cell);
 				let type = new tabris.TextView({
-					top: 2, left: 6, right: 6,
+					top: 8, left: 16, right: 16,
 					id: 'type',
-					font: 'bold 16px',
+					font: 'bold 18px',
 				}).appendTo(cell);
 				let address = new tabris.TextView({
-					top: [type, 1], left: 6, right: 6,
+					top: [type, 4], left: 16, right: 16,
 					id: 'address',
+					font: '15px',
+				}).appendTo(cell);
+				let units = new tabris.TextView({
+					top: [address, 4], left: 18, right: 16,
+					id: 'units',
 					font: '14px',
 				}).appendTo(cell);
-				new tabris.TextView({
-					top: [address, 1], left: 6, right: 6,
-					id: 'units',
-					font: '12px',
+
+				//Bottom "margin"
+				new tabris.Composite({
+					top: [units, 12],
 				}).appendTo(cell);
 
 				return cell;
