@@ -25,14 +25,20 @@ function formatDate(dt) {
 		if(navigator.globalization) {
 			navigator.globalization.dateToString(dt, date => {
 				resolve(date.value);
-			}, null /* no error callback */, {
-				formatLength: 'medium',
+			}, () => {
+				formatWithMoment(dt);
+			}, {
+				formatLength: 'long',
 				selector: 'date and time',
 			});
+		} else {
+			formatWithMoment(dt);
 		}
-		let fmt = moment.localeData(deviceLang).longDateFormat('LL');
-		fmt += ' ' + moment.localeData(deviceLang).longDateFormat('LTS');
-		resolve(moment(dt).format(fmt));
+		function formatWithMoment(dt) {
+			let fmt = moment.localeData(deviceLang).longDateFormat('LL');
+			fmt += ' ' + moment.localeData(deviceLang).longDateFormat('LTS');
+			resolve(moment(dt).format(fmt));
+		}
 	});
 }
 
@@ -49,11 +55,16 @@ function formatTime(dt) {
 		if(navigator.globalization) {
 			navigator.globalization.dateToString(dt, date => {
 				resolve(date.value);
-			}, null /* no error callback */, {
+			}, () => {
+				formatWithMoment();
+			}, {
 				formatLength: 'short',
 				selector: 'time',
 			});
 		} else {
+			formatWithMoment(dt);
+		}
+		function formatWithMoment(dt) {
 			let fmt = moment.localeData(deviceLang).longDateFormat('LT');
 			resolve(moment(dt).format(fmt));
 		}
