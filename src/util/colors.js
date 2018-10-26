@@ -5,7 +5,7 @@ module.exports = {
 	 * @return {*}
 	 */
 	rgbaToHex: function(string) {
-		if(/^rgba\s*\(\s*([+\-]?[0-9]+)\s*,\s*([+\-]?[0-9]+)\s*,\s*([+\-]?[0-9]+)\s*,\s*[+\-]?([0-9]*\.)?[0-9]+\s*\)$/.test(string)) {
+		if(/^rgba\s*\(\s*([+-]?[0-9]+)\s*,\s*([+-]?[0-9]+)\s*,\s*([+-]?[0-9]+)\s*,\s*[+-]?([0-9]*\.)?[0-9]+\s*\)$/.test(string)) {
 			return '#' +
 				('0' + parseInt(RegExp.$1, 10).toString(16)).slice(-2) +
 				('0' + parseInt(RegExp.$2, 10).toString(16)).slice(-2) +
