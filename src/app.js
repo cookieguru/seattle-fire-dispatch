@@ -3,10 +3,12 @@ const BorderedCell = require('./components/bordered_cell.js');
 const MainPage = require('./pages/main.js');
 const StationsPage = require('./pages/stations.js');
 const TwitterPage = require('./pages/twitter.js');
+const {COLORS} = require('./constants.js');
 
 let navigationView = new tabris.NavigationView({
 	left: 0, top: 0, right: 0, bottom: 0,
 	drawerActionVisible: true,
+	toolbarColor: COLORS.RED,
 }).appendTo(tabris.ui.contentView);
 
 tabris.ui.drawer.enabled = true;
