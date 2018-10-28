@@ -115,17 +115,17 @@ class IncidentPage extends BasePage {
 		new tabris.TabFolder({
 			left: 16, top: ['prev()', 16], right: 16,
 			paging: true,
-		}).appendTo(scrollView);
-
-		let tab = new tabris.Tab({
-			title: 'Responding units',
-		}).appendTo(tabFolder);
+		}).append(
+			new tabris.Tab({
+				title: 'Responding units',
+			})
+		).appendTo(scrollView);
 
 		for(let i in units) {
 			new tabris.TextView({
 				left: 16, top: ['prev()', 8], right: 16,
 				text: strFmt.unit(units[i]),
-			}).appendTo(tab);
+			}).appendTo(scrollView);
 		}
 
 		//Bottom "margin"
