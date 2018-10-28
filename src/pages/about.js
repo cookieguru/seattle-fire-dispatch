@@ -16,7 +16,7 @@ class AboutPage extends BasePage {
 
 		new tabris.TextView({
 			top: 0, left: 0, right: 0,
-			text: 'Version ' + tabris._client.get('tabris.App', 'version') + ' / ' + tabris.version,
+			text: 'Version ' + tabris.app.version + ' / ' + tabris.version,
 		}).appendTo(scrollView);
 
 		new tabris.TextView({
