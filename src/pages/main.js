@@ -116,7 +116,7 @@ class MainPage extends BasePage {
 			} else if(this.view.itemCount > this.incidents.length) {
 				this.view.remove(0, this.view.itemCount - this.incidents.length);
 			}
-			this.view.refresh();
+			this.view.load(this.incidents.length);
 		}).catch(err => {
 			new tabris.AlertDialog({
 				message: err,
