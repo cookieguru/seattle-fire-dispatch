@@ -1,14 +1,19 @@
 const moment = require('moment-timezone');
 
 const MOMENT_SFD_DATE_FORMAT = 'M/D/Y';
-let deviceLang = tabris.device.language.replace(/-.*/, '');
+const deviceLang = tabris.device.language.replace(/-.*/, '');
+
+function formatDateToSFDString(date) {
+	return moment(date).format(MOMENT_SFD_DATE_FORMAT);
+}
 
 /**
- * Returns today's date in Seattle time in the format expected by SFD
- * @return {string}
+ * Returns the current timestamp of today's date in Seattle time
+ * @return {Date}
  */
-function getTodayString() {
-	return moment.tz('America/Los_Angeles').format(MOMENT_SFD_DATE_FORMAT);
+function getTodayDate() {
+	let momentDate = moment.tz('America/Los_Angeles');
+	return new Date(momentDate.year(), momentDate.month(), momentDate.date());
 }
 
 /**
@@ -71,7 +76,8 @@ function formatTime(dt) {
 }
 
 module.exports = {
-	getTodayString: getTodayString,
 	formatDate: formatDate,
+	formatDateToSFDString: formatDateToSFDString,
 	formatTime: formatTime,
+	getTodayDate: getTodayDate,
 };

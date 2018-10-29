@@ -1,22 +1,22 @@
 const BasePage = require('./base.js');
 const BorderedCell = require('../components/bordered_cell.js');
-const dateFmt = require('../util/date.js');
-const dateUtil = require('../util/date.js');
 const IncidentPage = require('./incident.js');
 const IncidentsService = require('../services/incidents.js');
+const MapPage = require('./map.js');
 const strFmt = require('../util/string_formatter.js');
 const {COLORS} = require('../constants.json');
+const {formatTime, getTodayDate} = require('../util/date');
 
 class MainPage extends BasePage {
 	constructor(navigationView) {
 		super(navigationView);
 		this.incidentsService = new IncidentsService();
-		this.date = dateUtil.getTodayString();
+		this.date = null;
 	}
 
 	factory() {
-		let page = new tabris.Page({
-			title: 'Seattle Fire',
+		this.page = new tabris.Page({
+			title: 'Seattle Fire Dispatch',
 		});
 
 		/** @type {Incident[]} */
@@ -59,7 +59,7 @@ class MainPage extends BasePage {
 			},
 			updateCell: (cell, index) => {
 				let incident = this.incidents[index];
-				dateFmt.formatTime(incident.date).then((time) => {
+				formatTime(incident.date).then((time) => {
 					cell.children('#time')[0].set({
 						text: time,
 						textColor: incident.active ? COLORS.ACTIVE : 'initial',
@@ -76,23 +76,40 @@ class MainPage extends BasePage {
 			let pg = new IncidentPage(this.navigationView).factory(incident.incident, incident.date, incident.type,
 				incident.address, incident.level, incident.units);
 			pg.appendTo(this.navigationView);
-		}).appendTo(page);
+		}).appendTo(this.page);
+
+		this._setupActions();
 
 		this._loadIncidents(this.date);
 
-
-		return page;
+		return this.page;
 	}
 
 	/**
-	 * @param {string} date
+	 * @param {Date} date
 	 * @return void
 	 * @private
 	 */
 	_loadIncidents(date) {
+		this.actions.map((action) => {
+			action.enabled = false;
+		});
+
+		if(this.date !== date) {
+			this.incidents = [];
+			this.view.load(0);
+			this.view.refreshEnabled = this.date === null;
+			this.actions.map((action) => {
+				if(action.id === 'active-incidents-action') {
+					action.visible = false;
+				}
+			});
+		}
+		this.date = date;
+
 		this.view.refreshIndicator = true;
 		this.view.refreshMessage = 'loading...';
-		this.incidents = this.incidentsService.getIncidentsUsingRegex(date).then(items => {
+		this.incidentsService.getIncidentsUsingRegex(date).then(items => {
 			this.incidents = items;
 			if(this.view.itemCount < this.incidents.length) {
 				this.view.insert(0, this.incidents.length - this.view.itemCount);
@@ -111,6 +128,71 @@ class MainPage extends BasePage {
 			this.view.refreshIndicator = false;
 			this.view.refreshMessage = '';
 			this.view.reveal(0);
+
+			this.actions.map((action) => {
+				action.enabled = true;
+			});
+		});
+	}
+
+	_setupActions() {
+		this.actions = [
+			new tabris.Action({
+				title: 'Calendar',
+				image: {
+					src: 'images/calendar.png',
+					scale: 3,
+				},
+			}).on('select', () => {
+				let latestIncidentDate;
+				if(this.incidents[0]) {
+					latestIncidentDate = this.incidents[0].date;
+				} else {
+					latestIncidentDate = new Date();
+				}
+				new tabris.DateDialog({
+					date: latestIncidentDate,
+					minDate: new Date('2003-11-07 09:30:48'),
+					maxDate: getTodayDate(),
+				}).on({
+					select: ({date}) => {
+						this._loadIncidents(date);
+					},
+				}).open();
+			}).appendTo(this.navigationView),
+			new tabris.Action({
+				title: 'Active Incidents',
+				id: 'active-incidents-action',
+				image: {
+					src: 'images/map.png',
+					scale: 3,
+				},
+			}).on('select', () => {
+				/** @type {Incident[]} */
+				let activeIncidents = this.incidents.filter((incident) => {
+					return incident.active;
+				});
+				if(activeIncidents.length === 0) {
+					new tabris.AlertDialog({
+						message: 'There are no active incidents right now',
+						buttons: {
+							ok: 'OK',
+						},
+					}).open();
+					return;
+				}
+				new MapPage(this.navigationView).factory(activeIncidents).appendTo(this.navigationView);
+			}).appendTo(this.navigationView),
+		];
+
+		this.page.on('disappear', () => {
+			this.actions.map((action) => {
+				action.visible = false;
+			});
+		}).on('appear', () => {
+			this.actions.map((action) => {
+				action.visible = true;
+			});
 		});
 	}
 }

@@ -1,18 +1,27 @@
 const Incident = require('../models/incident.js');
+const {formatDateToSFDString} = require('../util/date.js');
 
 class IncidentsService {
 	constructor() {
+		this._todayURL = 'http://www2.seattle.gov/fire/realTime911/getRecsForDatePub.asp?action=Today&incDate=&rad1=des';
 		this._baseURL = 'http://www2.seattle.gov/fire/realTime911/getRecsForDatePub.asp?rad1=des&incDate=';
 	}
 
 	/**
 	 * Gets incident details if available
-	 * @param {string} date
+	 * @param {Date} date The date to fetch or null for the current day
 	 * @return {Promise<string>,<string>}
 	 */
 	getIncidentsUsingRegex(date) {
 		return new Promise((resolve, reject) => {
-			fetch(this._baseURL + date).then(response => {
+			let url;
+			if(date === null) {
+				url = this._todayURL;
+			} else {
+				date = formatDateToSFDString(date);
+				url = this._baseURL + date;
+			}
+			fetch(url).then(response => {
 				if(!response.ok) {
 					reject(`Unable to fetch data from SFD: ${response.status} ${response.statusText}`);
 				}
