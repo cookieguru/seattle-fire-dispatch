@@ -1,3 +1,4 @@
+/* global window */
 class GoogleInteractiveMap extends esmaps.Map {
 	/**
 	 * @param {object} options
@@ -58,7 +59,7 @@ class GoogleInteractiveMap extends esmaps.Map {
 				southWest: [this.minLat, this.minLon],
 				northEast: [this.maxLat, this.maxLon],
 			}, {
-				padding: 16,
+				padding: 16 * window.devicePixelRatio,
 				animate: false,
 			});
 		}
