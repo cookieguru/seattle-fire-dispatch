@@ -4,9 +4,9 @@
   "main": "src/app.js",
   "dependencies": {
     "md5": "^2.2.1",
-    "moment": ">=2.14",
-    "moment-timezone": "^0.5.11",
-    "tabris": "nightly"
+    "moment": ">=2.22.2",
+    "moment-timezone": "^0.5.21",
+     "tabris": "~2.5.1"
   },
   "license": "MIT",
   "repository": {
@@ -14,6 +14,6 @@
     "url": "https://github.com/cookieguru/seattle-fire-dispatch.git"
   },
   "devDependencies": {
-    "eslint": "^3.7.1"
+    "eslint": "~4.1.1"
   }
 }
