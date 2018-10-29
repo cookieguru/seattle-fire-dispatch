@@ -7,7 +7,7 @@ class LocalGeocoder {
 	 * @return {Promise<LatLon>,<string>}
 	 */
 	static geocode(address) {
-		address = address.toLowerCase();
+		address = address.trim().toLowerCase();
 		/** @type {string} */
 		let hash = md5(address);
 		hash = hash.substr(0, 2);

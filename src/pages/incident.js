@@ -3,7 +3,7 @@ const dateFmt = require('../util/date.js');
 const GoogleInteractiveMap = require('../components/maps/google/interactive.js');
 const GoogleStaticMap = require('../components/maps/google/static.js');
 const IncidentDetailsService = require('../services/incident_details.js');
-const LocalGeocoder = require('../services/adapters/local.js');
+const Geocoder = require('../services/geocoder.js');
 const strFmt = require('../util/string_formatter.js');
 const WebViewPage = require('./webview.js');
 
@@ -55,7 +55,7 @@ class IncidentPage extends BasePage {
 			top: 0, left: 0, right: 0,
 			height: height,
 		}).appendTo(page);
-		LocalGeocoder.geocode(address).then(ll => {
+		new Geocoder().geocode(address, incidentId).then(ll => {
 			new GoogleInteractiveMap({
 				top: 0, left: 0, right: 0, height: height,
 			}, ll.lat, ll.lon).appendTo(mapContainer);
