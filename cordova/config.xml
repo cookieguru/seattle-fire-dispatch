@@ -11,6 +11,7 @@
 		<variable name="ANDROID_API_KEY" value="$ANDROID_API_KEY" />
 	</plugin>
 	<platform name="android">
+		<hook type="before_compile" src="remove_location_permission.js" />
 		<icon src="resources/android/drawable-hdpi/ic_launcher.png" density="hdpi"/>
 		<icon src="resources/android/drawable-ldpi/ic_launcher.png" density="ldpi"/>
 		<icon src="resources/android/drawable-mdpi/ic_launcher.png" density="mdpi"/>
