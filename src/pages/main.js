@@ -156,7 +156,9 @@ class MainPage extends BasePage {
 					maxDate: getTodayDate(),
 				}).on({
 					select: ({date}) => {
-						this._loadIncidents(date);
+						if(date) {
+							this._loadIncidents(date);
+						}
 					},
 				}).open();
 			}).appendTo(this.navigationView),
