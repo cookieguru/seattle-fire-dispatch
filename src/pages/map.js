@@ -1,5 +1,5 @@
 const BasePage = require('./base.js');
-const GoogleInteractiveMap = require('../components/maps/google/interactive.js');
+const Map = require('../components/map.js');
 const IncidentPage = require('./incident.js');
 const LocatedIncident = require('../models/located_incident.js');
 const Geocoder = require('../services/geocoder.js');
@@ -15,7 +15,7 @@ class MapPage extends BasePage {
 			title: incidents.length + ' Active Incident' + (incidents.length === 1 ? null : 's'),
 		});
 
-		new GoogleInteractiveMap({
+		new Map({
 			top: 0, left: 0, right: 0, bottom: 0,
 		}, null, (incident) => {
 			let pg = new IncidentPage(this.navigationView).factory(incident.incident, incident.date, incident.type,

@@ -1,10 +1,10 @@
 /* global window */
-class GoogleInteractiveMap extends esmaps.Map {
+class Map extends esmaps.Map {
 	/**
 	 * @param {object} options
 	 * @param {LocatedIncident[]} incidents
 	 * @param {function} [tapHandler]
-	 * @return {GoogleInteractiveMap}
+	 * @return {Map}
 	 */
 	constructor(options, incidents, tapHandler) {
 		super(options);
@@ -31,7 +31,7 @@ class GoogleInteractiveMap extends esmaps.Map {
 
 	/**
 	 * @param {LocatedIncident} incident
-	 * @return {GoogleInteractiveMap}
+	 * @return {Map}
 	 */
 	addIncident(incident) {
 		this.addMarker(new esmaps.Marker({
@@ -66,4 +66,4 @@ class GoogleInteractiveMap extends esmaps.Map {
 	}
 }
 
-module.exports = GoogleInteractiveMap;
+module.exports = Map;

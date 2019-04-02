@@ -1,7 +1,6 @@
 const BasePage = require('./base.js');
 const dateFmt = require('../util/date.js');
-const GoogleInteractiveMap = require('../components/maps/google/interactive.js');
-const GoogleStaticMap = require('../components/maps/google/static.js');
+const Map = require('../components/map.js');
 const IncidentDetailsService = require('../services/incident_details.js');
 const Geocoder = require('../services/geocoder.js');
 const LocatedIncident = require('../models/located_incident.js');
@@ -57,15 +56,16 @@ class IncidentPage extends BasePage {
 			height: height,
 		}).appendTo(page);
 		new Geocoder().geocode(address, incidentId).then(ll => {
-			new GoogleInteractiveMap({
+			new Map({
 				top: 0, left: 0, right: 0, height: height,
 			}, [new LocatedIncident(null, ll)]).appendTo(mapContainer);
-		}).catch(() => {
-			new GoogleStaticMap({
-				top: 0, centerX: 0,
-				height: height,
-				width: screen.width,
-			}).setLocation(`${address}, Seattle, WA`).appendTo(mapContainer);
+		}).catch((e) => {
+			new tabris.AlertDialog({
+				message: e.message,
+				buttons: {
+					ok: 'OK',
+				},
+			}).open();
 		});
 
 		let scrollView = new tabris.ScrollView({
