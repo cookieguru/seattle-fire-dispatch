@@ -39,7 +39,7 @@ class TwitterPage extends BasePage {
 					data-width="$(screen.width * window.devicePixelRatio}"
 					href="https://twitter.com/SeattleFire"
 				>Tweets by SeattleFire</a>
-				<script async src="http://platform.twitter.com/widgets.js" charset="utf-8"></script>
+				<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 			</body>
 			</html>`,
 		}).on('navigate', (event) => {

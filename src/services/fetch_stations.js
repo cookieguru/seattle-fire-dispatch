@@ -5,7 +5,7 @@ class StationsService {
 	 */
 	getPhotoInformation() {
 		return new Promise((resolve, reject) => {
-			fetch('http://fire.tim-bond.com/stations/index.json').then(response => {
+			fetch('https://fire.tim-bond.com/stations/index.json').then(response => {
 				if(!response.ok) {
 					reject(`Unable to fetch data: ${response.status} ${response.statusText}`);
 				}

@@ -35,7 +35,7 @@ class StationPage extends BasePage {
 		let imageView = new tabris.ImageView({
 			left: 0, top: 0, right: 0,
 			background: '#CCCCCC',
-			image: `http://fire.tim-bond.com/stations/photos/${station.id}.jpg`,
+			image: `https://fire.tim-bond.com/stations/photos/${station.id}.jpg`,
 			scaleMode: 'fill',
 		}).appendTo(scrollView);
 
@@ -142,7 +142,7 @@ class StationPage extends BasePage {
 					text: 'MAP',
 				}).on('tap', () => {
 					//noinspection JSIgnoredPromiseFromCall
-					tabris.app.launch('http://maps.google.com/maps?q=' + encodeURIComponent(station.address + ', Seattle, WA'));
+					tabris.app.launch('https://maps.google.com/maps?q=' + encodeURIComponent(station.address + ', Seattle, WA'));
 				})
 			)
 		).appendTo(contentComposite);

@@ -1,7 +1,7 @@
 const LatLon = require('../../models/latlon.js');
 const {GEOCODER_TIMEOUT} = require('../../constants.json');
 
-const BASE_URL = 'http://fire.tim-bond.com/geocode?';
+const BASE_URL = 'https://fire.tim-bond.com/geocode?';
 
 class TimBondGeocoder {
 	/**

@@ -2,7 +2,7 @@
 <widget id="com.timbond.seattle.fire.dispatch" version="1.0.0">
 	<name>Seattle Fire Dispatch</name>
 	<description>Android app to display Seattle Fire Department's Real-Time 911 Dispatch</description>
-	<author email="apps@tim-bond.com" href="http://www.tim-bond.com/">Tim Bond</author>
+	<author email="apps@tim-bond.com" href="https://www.tim-bond.com/">Tim Bond</author>
 
 	<preference name="EnableDeveloperConsole" value="$IS_DEBUG" />
 

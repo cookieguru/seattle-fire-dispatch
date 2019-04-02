@@ -59,7 +59,7 @@ class StationsPage extends BasePage {
 			updateCell: (cell, index) => {
 				let station = stations[index];
 				cell.apply({
-					ImageView: {image: {src: `http://fire.tim-bond.com/stations/photos/${station.id}.jpg`}},
+					ImageView: {image: {src: `https://fire.tim-bond.com/stations/photos/${station.id}.jpg`}},
 					TextView: {text: typeof station.id === 'number' ? `${station.id} ${station.name}` : station.name},
 				});
 			},

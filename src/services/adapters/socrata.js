@@ -1,7 +1,7 @@
 const LatLon = require('../../models/latlon.js');
 const {GEOCODER_TIMEOUT} = require('../../constants.json');
 
-const BASE_URL = 'http://data.seattle.gov/resource/kzjm-xkqj.json?incident_number=';
+const BASE_URL = 'https://data.seattle.gov/resource/kzjm-xkqj.json?incident_number=';
 
 class SocrataGeocoder {
 	/**

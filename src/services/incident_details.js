@@ -5,7 +5,7 @@ class IncidentDetailsService {
 		if(!instance) {
 			instance = this;
 		}
-		this._baseURL = 'http://www2.seattle.gov/fire/incidentSearch/incidentDetail.asp?ID=';
+		this._baseURL = 'https://www2.ci.seattle.wa.us/fire/incidentSearch/incidentDetail.asp?ID=';
 		return instance;
 	}
 

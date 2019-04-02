@@ -3,8 +3,8 @@ const {formatDateToSFDString} = require('../util/date.js');
 
 class IncidentsService {
 	constructor() {
-		this._todayURL = 'http://www2.seattle.gov/fire/realTime911/getRecsForDatePub.asp?action=Today&incDate=&rad1=des';
-		this._baseURL = 'http://www2.seattle.gov/fire/realTime911/getRecsForDatePub.asp?rad1=des&incDate=';
+		this._todayURL = 'https://www2.ci.seattle.wa.us/fire/realTime911/getRecsForDatePub.asp?action=Today&incDate=&rad1=des';
+		this._baseURL = 'https://www2.ci.seattle.wa.us/fire/realTime911/getRecsForDatePub.asp?rad1=des&incDate=';
 	}
 
 	/**
