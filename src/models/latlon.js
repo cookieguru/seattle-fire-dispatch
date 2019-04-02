@@ -22,6 +22,10 @@ class LatLon {
 	get lon() {
 		return this._lon;
 	}
+
+	toString() {
+		return `${this._lat}, ${this._lon}`;
+	}
 }
 
 module.exports = LatLon;

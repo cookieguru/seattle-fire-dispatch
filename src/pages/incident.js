@@ -50,6 +50,13 @@ class IncidentPage extends BasePage {
 			action.dispose();
 		});
 
+		let navigateButton = new tabris.Button({
+			top: ['prev()', 5],
+			left: 16,
+			text: 'Directions',
+			enabled: false,
+		});
+
 		let height = Math.floor(screen.height / 3);
 		let mapContainer = new tabris.Composite({
 			top: 0, left: 0, right: 0,
@@ -59,6 +66,12 @@ class IncidentPage extends BasePage {
 			new Map({
 				top: 0, left: 0, right: 0, height: height,
 			}, [new LocatedIncident(null, ll)]).appendTo(mapContainer);
+			navigateButton.enabled = true;
+			navigateButton.on('tap', () => {
+				let encoded = encodeURIComponent(`${ll} (${address})`);
+				// noinspection JSIgnoredPromiseFromCall
+				tabris.app.launch(`http://maps.google.com/maps?daddr=${encoded}`);
+			});
 		}).catch((e) => {
 			new tabris.AlertDialog({
 				message: e.message,
@@ -111,6 +124,8 @@ class IncidentPage extends BasePage {
 				text: 'Alarm level ' + level,
 			}).appendTo(scrollView);
 		}
+
+		navigateButton.appendTo(scrollView);
 
 		//Only using this component for the header styling
 		new tabris.TabFolder({
