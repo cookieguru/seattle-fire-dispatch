@@ -35,7 +35,7 @@ class MainPage extends BasePage {
 					font: 'black 18px',
 				}).appendTo(cell);
 				let type = new tabris.TextView({
-					top: 8, left: 16, right: 16,
+					top: 12, left: 16, right: 16,
 					id: 'type',
 					font: 'bold 18px',
 				}).appendTo(cell);
@@ -45,7 +45,7 @@ class MainPage extends BasePage {
 					font: '15px',
 				}).appendTo(cell);
 				let units = new tabris.TextView({
-					top: [address, 4], left: 18, right: 16,
+					top: [address, 4], left: 16, right: 16,
 					id: 'units',
 					font: '14px',
 				}).appendTo(cell);
