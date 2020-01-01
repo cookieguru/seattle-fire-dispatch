@@ -19,6 +19,7 @@
 	"^FR?B\\d*$": "Fireboat #",
 	"^FRB": "Fire Rescue Boat",
 	"^HAZ\\d+$": "Hazardous Materials Unit #",
+	"^HEALTH\\d+$": "Health #",
 	"^HOSE\\d+$": "Hose #",
 	"^L\\d+$": "Ladder #",
 	"^M\\d+$": "Medic #",
