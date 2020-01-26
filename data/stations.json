@@ -59,11 +59,10 @@
 		"lat": 47.6036411,
 		"lon": -122.338769,
 		"apparatus": [
-			"E4",
+			"E5",
 			"FB2",
 			"FB4",
-			"FIREBOAT",
-			"PTRL4"
+			"FIREBOAT"
 		],
 		"reserve": [
 		]
