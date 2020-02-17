@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.timbond.seattle.fire.dispatch" version="1.0.6">
+<widget id="com.timbond.seattle.fire.dispatch" version="1.0.6" xmlns:android="http://schemas.android.com/apk/res/android">
 	<name>Seattle Fire Dispatch</name>
 	<description>Android app to display Seattle Fire Department's Real-Time 911 Dispatch</description>
 	<author email="apps@tim-bond.com" href="https://www.tim-bond.com/">Tim Bond</author>
@@ -12,6 +12,11 @@
 	</plugin>
 	<platform name="android">
 		<hook type="before_compile" src="remove_location_permission.js" />
+
+		<edit-config file="AndroidManifest.xml" target="/manifest/application" mode="merge">
+			<application android:usesCleartextTraffic="$IS_DEBUG" />
+		</edit-config>
+
 		<icon src="resources/android/drawable-hdpi/ic_launcher.png" density="hdpi"/>
 		<icon src="resources/android/drawable-ldpi/ic_launcher.png" density="ldpi"/>
 		<icon src="resources/android/drawable-mdpi/ic_launcher.png" density="mdpi"/>
