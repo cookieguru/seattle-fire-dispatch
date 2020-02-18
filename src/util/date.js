@@ -1,10 +1,7 @@
-const moment = require('moment-timezone');
-
-const MOMENT_SFD_DATE_FORMAT = 'M/D/Y';
-const deviceLang = tabris.device.language.replace(/-.*/, '');
+const spacetime = require('spacetime');
 
 function formatDateToSFDString(date) {
-	return moment(date).format(MOMENT_SFD_DATE_FORMAT);
+	return spacetime(date).format('numeric-us');
 }
 
 /**
@@ -12,8 +9,8 @@ function formatDateToSFDString(date) {
  * @return {Date}
  */
 function getTodayDate() {
-	let momentDate = moment.tz('America/Los_Angeles');
-	return new Date(momentDate.year(), momentDate.month(), momentDate.date());
+	const date = spacetime.now('America/Los_Angeles');
+	return new Date(date.year(), date.month(), date.date());
 }
 
 /**
@@ -30,18 +27,17 @@ function formatDate(dt) {
 			navigator.globalization.dateToString(dt, date => {
 				resolve(date.value);
 			}, () => {
-				formatWithMoment(dt);
+				formatWithSpacetime(dt);
 			}, {
 				formatLength: 'long',
 				selector: 'date and time',
 			});
 		} else {
-			formatWithMoment(dt);
+			formatWithSpacetime(dt);
 		}
-		function formatWithMoment(dt) {
-			let fmt = moment.localeData(deviceLang).longDateFormat('LL');
-			fmt += ' ' + moment.localeData(deviceLang).longDateFormat('LTS');
-			resolve(moment(dt).format(fmt));
+		function formatWithSpacetime(dt) {
+			const offset = dt.getTimezoneOffset();
+			resolve(spacetime(dt, 'UTC').subtract(offset, 'minute').format('nice'));
 		}
 	});
 }
@@ -60,17 +56,17 @@ function formatTime(dt) {
 			navigator.globalization.dateToString(dt, date => {
 				resolve(date.value);
 			}, () => {
-				formatWithMoment();
+				formatWithSpacetime(dt);
 			}, {
 				formatLength: 'short',
 				selector: 'time',
 			});
 		} else {
-			formatWithMoment(dt);
+			formatWithSpacetime(dt);
 		}
-		function formatWithMoment(dt) {
-			let fmt = moment.localeData(deviceLang).longDateFormat('LT');
-			resolve(moment(dt).format(fmt));
+		function formatWithSpacetime(dt) {
+			const offset = dt.getTimezoneOffset();
+			resolve(spacetime(dt, 'UTC').subtract(offset, 'minute').format('time'));
 		}
 	});
 }

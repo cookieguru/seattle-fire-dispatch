@@ -4,8 +4,7 @@
   "main": "src/app.js",
   "dependencies": {
     "md5": "^2.2.1",
-    "moment": ">=2.22.2",
-    "moment-timezone": "^0.5.21",
+    "spacetime": "^6.4.1",
     "tabris": "^2.9.0"
   },
   "license": "MIT",
