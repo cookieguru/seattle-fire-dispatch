@@ -46,6 +46,7 @@ class IncidentsService {
 						incident.date = new Date(m[2]);
 						incident.incident = m[3];
 						incident.level = m[4] === level + '' ? level : m[4] || null;
+						m[5].replace('AIR ', 'AIR'); //handle "AIR 240-260"
 						incident.units = m[5].split(' ');
 						incident.address = m[6];
 						incident.type = m[7];

@@ -2,7 +2,7 @@
 	"^234$": "Fire Chief (234)",
 	"^89$": "Assistant Chief of Operations (89)",
 	"^A\\d+$": "Aid #",
-	"^AIR\\d{3}$": "Mobile Air Compressor #",
+	"^AIR\\d{3}(?:-\\d+)?$": "Mobile Air Compressor #",
 	"^AIR\\d{1,2}$": "Air Bottle Unit #",
 	"^B\\d+$": "Battalion #",
 	"^BUFF\\d+$": "Fire Buff #",

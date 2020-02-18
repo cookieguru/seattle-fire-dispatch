@@ -6,7 +6,7 @@ module.exports = {
 	 * @return {string} A description of the unit, e.g. Engine 8
 	 */
 	unit: function(string) {
-		let match = string.match(/(\d+)$/);
+		let match = string.match(/(\d+.*\d*)$/);
 		let num = match ? parseInt(match[1]) : '';
 
 		const units = require('../../data/units.json');
