@@ -14,6 +14,16 @@ function getTodayDate() {
 }
 
 /**
+ * Returns the corresponding date in Seattle time from a given date in UTC
+ * @param {Date} date
+ * @return {Date}
+ */
+function convertToSeattleDate(date) {
+	const space = spacetime(date, 'UTC').goto('America/Los_Angeles');
+	return new Date(space.year(), space.month(), space.date());
+}
+
+/**
  * Formats a date to the device's locale
  * @param {Date|number} dt A Date or a timestamp to format
  * @return {Promise<string>}
@@ -72,6 +82,7 @@ function formatTime(dt) {
 }
 
 module.exports = {
+	convertToSeattleDate,
 	formatDate: formatDate,
 	formatDateToSFDString: formatDateToSFDString,
 	formatTime: formatTime,

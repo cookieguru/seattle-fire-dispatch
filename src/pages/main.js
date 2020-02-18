@@ -5,7 +5,7 @@ const IncidentsService = require('../services/incidents.js');
 const MapPage = require('./map.js');
 const strFmt = require('../util/string_formatter.js');
 const {COLORS} = require('../constants.json');
-const {formatTime, getTodayDate} = require('../util/date');
+const {convertToSeattleDate, formatTime, getTodayDate} = require('../util/date');
 
 class MainPage extends BasePage {
 	constructor(navigationView) {
@@ -157,7 +157,7 @@ class MainPage extends BasePage {
 				}).on({
 					select: ({date}) => {
 						if(date) {
-							this._loadIncidents(date);
+							this._loadIncidents(convertToSeattleDate(date));
 						}
 					},
 				}).open();
