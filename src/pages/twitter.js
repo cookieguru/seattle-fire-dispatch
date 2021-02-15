@@ -1,5 +1,6 @@
 const BasePage = require('./base.js');
 const {rgbaToHex} = require('../util/colors.js');
+const {COLORS} = require('../constants.js');
 
 class TwitterPage extends BasePage {
 	factory() {
@@ -34,7 +35,7 @@ class TwitterPage extends BasePage {
 					class="twitter-timeline" 
 					data-chrome="noheader" 
 					data-dnt="true" 
-					data-link-color="${rgbaToHex(this.navigationView.toolbarColor)}"
+					data-link-color="${rgbaToHex(COLORS.RED)}"
 					data-show-replies="true" 
 					data-width="$(screen.width * window.devicePixelRatio}"
 					href="https://twitter.com/SeattleFire"

@@ -1,0 +1,12 @@
+module.exports = {
+	BORDER_COLOR: '#E5E5E5',
+	COLORS: {
+		RED: '#DB1F26',
+		ACTIVE: '#009933',
+	},
+	DEFAULT_LAT_LON: [
+		47.6012528, -122.3283740,
+	],
+	GEOCODER_TIMEOUT: 4000,
+	MARGIN: 15,
+};

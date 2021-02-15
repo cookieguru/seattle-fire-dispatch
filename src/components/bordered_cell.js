@@ -1,5 +1,5 @@
 const Cell = require('./cell.js');
-const {BORDER_COLOR} = require('../constants.json');
+const {BORDER_COLOR} = require('../constants.js');
 
 class BorderedCell extends Cell {
 	constructor() {

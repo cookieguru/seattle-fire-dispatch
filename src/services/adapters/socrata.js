@@ -1,5 +1,5 @@
 const LatLon = require('../../models/latlon.js');
-const {GEOCODER_TIMEOUT} = require('../../constants.json');
+const {GEOCODER_TIMEOUT} = require('../../constants.js');
 
 const BASE_URL = 'https://data.seattle.gov/resource/kzjm-xkqj.json?incident_number=';
 

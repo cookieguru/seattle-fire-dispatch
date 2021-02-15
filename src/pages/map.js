@@ -3,7 +3,7 @@ const Map = require('../components/map.js');
 const IncidentPage = require('./incident.js');
 const LocatedIncident = require('../models/located_incident.js');
 const Geocoder = require('../services/geocoder.js');
-const {DEFAULT_LAT_LON} = require('../constants.json');
+const {DEFAULT_LAT_LON} = require('../constants.js');
 
 class MapPage extends BasePage {
 	/**
