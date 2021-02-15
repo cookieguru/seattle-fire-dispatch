@@ -1,7 +1,7 @@
 const BasePage = require('./base.js');
 const colorUtils = require('../util/colors.js');
 const StationsService = require('../services/fetch_stations.js');
-const {COLORS} = require('../constants.json');
+const {COLORS} = require('../constants.js');
 const {unit} = require('../util/string_formatter.js');
 
 class StationPage extends BasePage {

@@ -6,6 +6,7 @@ const Geocoder = require('../services/geocoder.js');
 const LocatedIncident = require('../models/located_incident.js');
 const strFmt = require('../util/string_formatter.js');
 const WebViewPage = require('./webview.js');
+const {MARGIN} = require('../constants');
 
 class IncidentPage extends BasePage {
 	/**

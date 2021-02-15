@@ -1,5 +1,5 @@
 const LatLon = require('../../models/latlon.js');
-const {GEOCODER_TIMEOUT} = require('../../constants.json');
+const {GEOCODER_TIMEOUT} = require('../../constants.js');
 
 const BASE_URL = 'https://gisrevprxy.seattle.gov/ArcGIS/rest/services/locators/SND/GeocodeServer/findAddressCandidates?';
 const MINIMUM_CONFIDENCE = 70;

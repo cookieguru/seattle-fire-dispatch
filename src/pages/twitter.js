@@ -1,5 +1,5 @@
 const BasePage = require('./base.js');
-const {rgbaToHex} = require('../util/colors.js');
+const {COLORS} = require('../constants.js');
 
 class TwitterPage extends BasePage {
 	factory() {

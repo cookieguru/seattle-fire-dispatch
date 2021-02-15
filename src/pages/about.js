@@ -1,5 +1,5 @@
 const BasePage = require('./base.js');
-const {MARGIN} = require('../constants.json');
+const {MARGIN} = require('../constants.js');
 
 class AboutPage extends BasePage {
 	factory() {

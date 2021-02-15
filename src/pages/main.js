@@ -4,7 +4,7 @@ const IncidentPage = require('./incident.js');
 const IncidentsService = require('../services/incidents.js');
 const MapPage = require('./map.js');
 const strFmt = require('../util/string_formatter.js');
-const {COLORS} = require('../constants.json');
+const {COLORS} = require('../constants.js');
 const {convertToSeattleDate, formatTime, getTodayDate} = require('../util/date');
 
 class MainPage extends BasePage {
