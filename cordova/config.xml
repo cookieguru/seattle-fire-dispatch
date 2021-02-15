@@ -7,6 +7,7 @@
 	<preference name="EnableDeveloperConsole" value="$IS_DEBUG" />
 
 	<plugin name="cordova-plugin-globalization" version="1.0.3" />
+	<plugin name="cordova-plugin-theme-detection" version="1.3.0" />
 	<plugin name="tabris-plugin-maps" spec="https://github.com/cookieguru/tabris-plugin-maps">
 		<variable name="ANDROID_API_KEY" value="$ANDROID_API_KEY" />
 	</plugin>
