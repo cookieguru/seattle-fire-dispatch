@@ -19,6 +19,7 @@
 	"^FR?B\\d*$": "Fireboat #",
 	"^FRB": "Fire Rescue Boat",
 	"^HAZ\\d+$": "Hazardous Materials Unit #",
+	"^HAZVAN$": "Hazardous Materials Van",
 	"^HEALTH\\d+$": "Health #",
 	"^HOSE\\d+$": "Hose #",
 	"^L\\d+$": "Ladder #",
@@ -26,6 +27,7 @@
 	"^MAB\\d+$": "Medical Ambulance Bus #",
 	"^MAR\\d+$": "Marshal #",
 	"^MARINE\\d*$": "Marine Unit #",
+	"^MARVAN$": "Marine Van",
 	"^MCI\\d+$": "Multiple Casualty Unit #",
 	"^MMST$": "Metropolitan Medical Strike Team",
 	"^MRN\\d+$": "Marine #",
@@ -38,7 +40,9 @@
 	"^SAFT\\d+$": "Safety Chief #",
 	"^SQ\\d+$": "Squad #",
 	"^STAF\\d+$": "Staff #",
+	"^T(?:F|UN)\\d+$": "Tunnel Fan #",
 	"^TRN\\d+$": "Training #",
 	"^U99$": "Unit 99 (Marine Specialty Unit)",
-	"^USAR$": "Urban Search & Rescue"
+	"^USAR$": "Urban Search & Rescue",
+	"^VAULT\\d+$": "Vault #"
 }
