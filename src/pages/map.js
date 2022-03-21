@@ -12,7 +12,7 @@ class MapPage extends BasePage {
 	 */
 	factory(incidents) {
 		this.page = new tabris.Page({
-			title: incidents.length + ' Active Incident' + (incidents.length === 1 ? null : 's'),
+			title: incidents.length + ' Active Incident' + (incidents.length === 1 ? '' : 's'),
 		});
 
 		new Map({
