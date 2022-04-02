@@ -13,6 +13,6 @@
     "url": "https://github.com/cookieguru/seattle-fire-dispatch.git"
   },
   "devDependencies": {
-    "eslint": "~4.18.2"
+    "eslint": "^5.0.0"
   }
 }
