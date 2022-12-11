@@ -15,6 +15,7 @@
 
 		<edit-config file="AndroidManifest.xml" target="/manifest/application" mode="merge">
 			<application android:usesCleartextTraffic="$IS_DEBUG" />
+			<uses-sdk android:minSdkVersion="17" android:targetSdkVersion="31" />
 		</edit-config>
 
 		<icon src="resources/android/drawable-hdpi/ic_launcher.png" density="hdpi"/>
