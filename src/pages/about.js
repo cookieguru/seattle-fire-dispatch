@@ -1,53 +1,54 @@
 const BasePage = require('./base.js');
 const {MARGIN} = require('../constants.js');
+const {Button, Page, ScrollView, TextView, app, version} = require('tabris');
 
 class AboutPage extends BasePage {
 	factory() {
-		let page = new tabris.Page({
+		let page = new Page({
 			title: 'About',
 		});
 
-		let scrollView = new tabris.ScrollView({
+		let scrollView = new ScrollView({
 			top: MARGIN,
 			bottom: MARGIN,
 			left: MARGIN,
 			right: MARGIN,
 		}).appendTo(page);
 
-		new tabris.TextView({
+		new TextView({
 			top: 0, left: 0, right: 0,
-			text: 'Version ' + tabris.app.version + ' / ' + tabris.version,
+			text: 'Version ' + app.version + ' / ' + version,
 		}).appendTo(scrollView);
 
-		new tabris.TextView({
+		new TextView({
 			top: ['prev()', MARGIN], left: 0, right: 0,
 			text: '\u00A9 2017 Tim Bond',
 		}).appendTo(scrollView);
 
-		new tabris.TextView({
+		new TextView({
 			top: ['prev()', MARGIN], left: 0, right: 0,
 			markupEnabled: true,
 			text: 'Bugs?  Comments?  Suggestions?  <a href="#">apps@Tim-Bond.com</a>',
-		}).on('tap', () => {
+		}).onTap(() => {
 			// noinspection JSIgnoredPromiseFromCall
-			tabris.app.launch('mailto:apps@tim-bond.com?subject=Seattle+Fire+Dispatch');
+			app.launch('mailto:apps@tim-bond.com?subject=Seattle+Fire+Dispatch');
 		}).appendTo(scrollView);
 
-		new tabris.Button({
+		new Button({
 			top: ['prev()', MARGIN], left: 0, right: 0,
 			text: 'Learn more about this app',
-		}).on('select', () => {
+		}).onSelect(() => {
 			// noinspection JSIgnoredPromiseFromCall
-			tabris.app.launch('https://github.com/cookieguru/seattle-fire-dispatch/wiki');
+			app.launch('https://github.com/cookieguru/seattle-fire-dispatch/wiki');
 		}).appendTo(scrollView);
 
-		new tabris.TextView({
+		new TextView({
 			top: ['prev()', MARGIN], left: 0, right: 0,
 			markupEnabled: true,
 			text: 'Special thanks to Max Steinmetz for the app icon',
 		}).appendTo(scrollView);
 
-		new tabris.TextView({
+		new TextView({
 			top: ['prev()', MARGIN * 5], left: 0, right: 0,
 			font: '10px Roboto',
 			text: ['The data made available here has been modified for use from its original source, which is the ',

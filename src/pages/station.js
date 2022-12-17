@@ -3,6 +3,7 @@ const colorUtils = require('../util/colors.js');
 const StationsService = require('../services/fetch_stations.js');
 const {COLORS} = require('../constants.js');
 const {unit} = require('../util/string_formatter.js');
+const {CollectionView, Composite, ImageView, Page, ScrollView, Tab, TabFolder, TextView, app} = require('tabris');
 
 class StationPage extends BasePage {
 	/**
@@ -17,29 +18,29 @@ class StationPage extends BasePage {
 
 		let titleCompY = 0;
 
-		let page = new tabris.Page({
+		let page = new Page({
 			title: typeof station.id === 'number' ? 'Station ' + station.id : station.id,
 		});
 
-		page.on('appear', () => {
+		page.onAppear(() => {
 			this.navigationView.toolbarVisible = false;
-		}).on('dispose', () => {
+		}).onDispose(() => {
 			this.navigationView.toolbarVisible = true;
 		});
 
 		//TODO: https://raw.githubusercontent.com/eclipsesource/tabris-js/master/examples/parallax/parallax.js
-		let scrollView = new tabris.ScrollView({
+		let scrollView = new ScrollView({
 			left: 0, right: 0, top: 0, bottom: 0,
 		}).appendTo(page);
 
-		let imageView = new tabris.ImageView({
+		let imageView = new ImageView({
 			left: 0, top: 0, right: 0,
 			background: '#CCCCCC',
 			image: `https://fire.tim-bond.com/stations/photos/${station.id}.jpg`,
 			scaleMode: 'fill',
 		}).appendTo(scrollView);
 
-		new tabris.ImageView({
+		new ImageView({
 			left: MARGIN,
 			top: MARGIN,
 			highlightOnTouch: true,
@@ -48,22 +49,22 @@ class StationPage extends BasePage {
 				height: 24,
 				width: 24,
 			},
-		}).appendTo(page).on('tap', () => {
+		}).appendTo(page).onTap(() => {
 			page.dispose();
 		});
 
-		let contentComposite = new tabris.Composite({
+		let contentComposite = new Composite({
 			left: 0, right: 0, top: '#titleComposite', height: screen.height - 78,
 			background: 'white',
 		}).appendTo(scrollView);
 
-		let titleComposite = new tabris.Composite({
+		let titleComposite = new Composite({
 			left: 0, right: 0, height: 78,
 			id: 'titleComposite',
 			background: colorUtils.setOpacityOfHexString(COLORS.RED, INITIAL_TITLE_COMPOSITE_OPACITY),
 		}).appendTo(scrollView);
 
-		new tabris.TextView({
+		new TextView({
 			left: GUTTER, top: MARGIN_SMALL, right: MARGIN,
 			markupEnabled: true,
 			text: '<b>' + (typeof station.id === 'number' ? 'Station ' : '') + station.id + '</b>',
@@ -71,7 +72,7 @@ class StationPage extends BasePage {
 			textColor: 'black',
 		}).appendTo(titleComposite);
 
-		new tabris.TextView({
+		new TextView({
 			left: GUTTER, bottom: MARGIN_SMALL, right: MARGIN, top: 'prev()',
 			markupEnabled: true,
 			text: '<b>' + station.name + '</b>',
@@ -79,14 +80,14 @@ class StationPage extends BasePage {
 			textColor: 'white',
 		}).appendTo(titleComposite);
 
-		scrollView.on('resize', ({height}) => {
+		scrollView.onResize(({height}) => {
 			imageView.height = height / 2;
 			let titleCompHeight = titleComposite.height;
 			titleCompY = Math.min(imageView.height - titleCompHeight, height / 2);
 			titleComposite.top = titleCompY;
 		});
 
-		scrollView.on('scrollY', ({offset}) => {
+		scrollView.onScrollY(({offset}) => {
 			imageView.transform = {translationY: Math.max(0, offset * 0.4)};
 			titleComposite.transform = {translationY: Math.max(0, offset - titleCompY)};
 			let opacity = calculateTitleCompositeOpacity(offset, titleCompY);
@@ -99,7 +100,7 @@ class StationPage extends BasePage {
 			return opacity <= 1 ? opacity : 1;
 		}
 
-		let credit = new tabris.TextView({
+		let credit = new TextView({
 			top: ['prev()', 2], left: MARGIN, right: MARGIN,
 			font: 'italic 10px',
 			text: ' ',
@@ -114,40 +115,40 @@ class StationPage extends BasePage {
 				if(photo.license) {
 					credit.text += `, ${photo.license}`;
 				}
-				credit.on('tap', () => {
+				credit.onTap(() => {
 					// noinspection JSIgnoredPromiseFromCall
-					tabris.app.launch(photo.link);
+					app.launch(photo.link);
 				});
 			}
 		});
-		new tabris.TextView({
+		new TextView({
 			top: ['prev()', MARGIN],
 			left: MARGIN,
 			right: MARGIN,
 			text: station.address,
 		}).appendTo(contentComposite);
 
-		new tabris.Composite({
+		new Composite({
 			top: ['prev()', MARGIN], left: MARGIN,
 			background: '#CCC',
 		}).append(
-			new tabris.Composite({
+			new Composite({
 				top: 1, right: 1, bottom: 1, left: 1,
 				highlightOnTouch: true,
 				background: '#FFF',
 			}).append(
-				new tabris.TextView({
+				new TextView({
 					top: 6, right: 12, bottom: 6, left: 12,
 					font: '12px',
 					text: 'MAP',
 				}).on('tap', () => {
 					//noinspection JSIgnoredPromiseFromCall
-					tabris.app.launch('https://maps.google.com/maps?q=' + encodeURIComponent(station.address + ', Seattle, WA'));
+					app.launch('https://maps.google.com/maps?q=' + encodeURIComponent(station.address + ', Seattle, WA'));
 				})
 			)
 		).appendTo(contentComposite);
 
-		let tabFolder = new tabris.TabFolder({
+		let tabFolder = new TabFolder({
 			left: MARGIN, top: ['prev()', MARGIN], right: MARGIN, bottom: MARGIN,
 			paging: true,
 		}).appendTo(contentComposite);
@@ -164,17 +165,17 @@ class StationPage extends BasePage {
 module.exports = StationPage;
 
 function createTab(title, items) {
-	let tab = new tabris.Tab({
+	let tab = new Tab({
 		title: title,
 	});
 
-	new tabris.CollectionView({
+	new CollectionView({
 		left: 0, top: 0, right: 0, bottom: 0,
 		itemCount: items.length,
 		cellHeight: 25,
 		createCell: () => {
-			let cell = new tabris.Composite();
-			new tabris.TextView({
+			let cell = new Composite();
+			new TextView({
 				left: 0, centerY: 0, right: 0,
 			}).appendTo(cell);
 			return cell;

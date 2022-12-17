@@ -1,21 +1,22 @@
 const BasePage = require('./base.js');
 const {rgbaToHex} = require('../util/colors.js');
 const {COLORS} = require('../constants.js');
+const {ActivityIndicator, Page, WebView, app} = require('tabris');
 
 class TwitterPage extends BasePage {
 	factory() {
-		let page = new tabris.Page({
+		let page = new Page({
 			title: 'Tweets by @SeattleFire',
 			autoDispose: false,
 		});
 
-		new tabris.ActivityIndicator({
+		new ActivityIndicator({
 			centerX: 0,
 			centerY: 0,
 		}).appendTo(page);
 
 		// noinspection JSUnresolvedLibraryURL
-		let webView = new tabris.WebView({
+		let webView = new WebView({
 			left: 0,
 			top: 0,
 			right: 0,
@@ -48,7 +49,7 @@ class TwitterPage extends BasePage {
 				return;
 			}
 			// noinspection JSIgnoredPromiseFromCall
-			tabris.app.launch(event.url);
+			app.launch(event.url);
 			event.preventDefault();
 		}).appendTo(page);
 
@@ -59,9 +60,9 @@ class TwitterPage extends BasePage {
 			}
 		};
 
-		tabris.app.on('backNavigation', backNav);
-		page.on('disappear', () => {
-			tabris.app.off('backNavigation', backNav);
+		app.onBackNavigation(backNav);
+		page.onDisappear(() => {
+			app.off('backNavigation', backNav);
 		});
 
 		return page;

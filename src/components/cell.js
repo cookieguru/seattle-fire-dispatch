@@ -1,4 +1,6 @@
-class Cell extends tabris.Composite {
+const {Composite} = require('tabris');
+
+class Cell extends Composite {
 	constructor() {
 		super();
 		let highlight = true;

@@ -6,6 +6,7 @@ const MapPage = require('./map.js');
 const strFmt = require('../util/string_formatter.js');
 const {COLORS} = require('../constants.js');
 const {convertToSeattleDate, formatTime, getTodayDate} = require('../util/date');
+const {Action, AlertDialog, CollectionView, Composite, DateDialog, Page, TextView} = require('tabris');
 
 class MainPage extends BasePage {
 	constructor(navigationView) {
@@ -15,45 +16,53 @@ class MainPage extends BasePage {
 	}
 
 	factory() {
-		this.page = new tabris.Page({
+		this.page = new Page({
 			title: 'Seattle Fire Dispatch',
 		});
 
 		/** @type {Incident[]} */
 		this.incidents = [];
 
-		this.view = new tabris.CollectionView({
+		this.view = new CollectionView({
 			left: 0, top: 0, right: 0, bottom: 0,
 			cellHeight: 'auto',
 			refreshEnabled: true,
 			createCell: () => {
 				let cell = new BorderedCell();
 
-				new tabris.TextView({
+				new TextView({
 					top: 12, right: 16,
 					id: 'time',
 					font: 'black 18px',
 				}).appendTo(cell);
-				let type = new tabris.TextView({
+				let type = new TextView({
 					top: 12, left: 16, right: 16,
 					id: 'type',
 					font: 'bold 18px',
 				}).appendTo(cell);
-				let address = new tabris.TextView({
+				let address = new TextView({
 					top: [type, 4], left: 16, right: 16,
 					id: 'address',
 					font: '15px',
 				}).appendTo(cell);
-				let units = new tabris.TextView({
+				let units = new TextView({
 					top: [address, 4], left: 16, right: 16,
 					id: 'units',
 					font: '14px',
 				}).appendTo(cell);
 
 				//Bottom "margin"
-				new tabris.Composite({
+				new Composite({
 					top: [units, 12],
 				}).appendTo(cell);
+
+				cell.onTap(() => {
+					const index = this.view.itemIndex(cell);
+					let incident = this.incidents[index];
+					let pg = new IncidentPage(this.navigationView).factory(incident.incident, incident.date,
+						incident.type, incident.address, incident.level, incident.units);
+					pg.appendTo(this.navigationView);
+				});
 
 				return cell;
 			},
@@ -69,13 +78,8 @@ class MainPage extends BasePage {
 				cell.children('#address')[0].text = incident.address;
 				cell.children('#units')[0].text = incident.units.join(', ');
 			},
-		}).on('refresh', () => {
+		}).onRefresh(() => {
 			this._loadIncidents(this.date);
-		}).on('select', ({index}) => {
-			let incident = this.incidents[index];
-			let pg = new IncidentPage(this.navigationView).factory(incident.incident, incident.date, incident.type,
-				incident.address, incident.level, incident.units);
-			pg.appendTo(this.navigationView);
 		}).appendTo(this.page);
 
 		this._setupActions();
@@ -118,7 +122,7 @@ class MainPage extends BasePage {
 			}
 			this.view.load(this.incidents.length);
 		}).catch(err => {
-			new tabris.AlertDialog({
+			new AlertDialog({
 				message: err,
 				buttons: {
 					ok: 'OK',
@@ -137,20 +141,20 @@ class MainPage extends BasePage {
 
 	_setupActions() {
 		this.actions = [
-			new tabris.Action({
+			new Action({
 				title: 'Calendar',
 				image: {
 					src: 'images/calendar.png',
 					scale: 3,
 				},
-			}).on('select', () => {
+			}).onSelect(() => {
 				let latestIncidentDate;
 				if(this.incidents[0]) {
 					latestIncidentDate = this.incidents[0].date;
 				} else {
 					latestIncidentDate = new Date();
 				}
-				new tabris.DateDialog({
+				new DateDialog({
 					date: latestIncidentDate,
 					minDate: new Date('2003-11-07 09:30:48'),
 					maxDate: getTodayDate(),
@@ -162,20 +166,20 @@ class MainPage extends BasePage {
 					},
 				}).open();
 			}).appendTo(this.navigationView),
-			new tabris.Action({
+			new Action({
 				title: 'Active Incidents',
 				id: 'active-incidents-action',
 				image: {
 					src: 'images/map.png',
 					scale: 3,
 				},
-			}).on('select', () => {
+			}).onSelect(() => {
 				/** @type {Incident[]} */
 				let activeIncidents = this.incidents.filter((incident) => {
 					return incident.active;
 				});
 				if(activeIncidents.length === 0) {
-					new tabris.AlertDialog({
+					new AlertDialog({
 						message: 'There are no active incidents right now',
 						buttons: {
 							ok: 'OK',
@@ -187,11 +191,11 @@ class MainPage extends BasePage {
 			}).appendTo(this.navigationView),
 		];
 
-		this.page.on('disappear', () => {
+		this.page.onDisappear(() => {
 			this.actions.map((action) => {
 				action.visible = false;
 			});
-		}).on('appear', () => {
+		}).onAppear(() => {
 			this.actions.map((action) => {
 				action.visible = true;
 			});

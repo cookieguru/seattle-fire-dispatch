@@ -3,9 +3,9 @@
   "description": "Android app to display Seattle Fire Department's Real-Time 911 Dispatch",
   "main": "src/app.js",
   "dependencies": {
-    "md5": "^2.2.1",
-    "spacetime": "^6.6.0",
-    "tabris": "^2.9.0"
+    "md5": "^2.3.0",
+    "spacetime": "^6.16.3",
+    "tabris": "^3.9.0"
   },
   "license": "MIT",
   "repository": {

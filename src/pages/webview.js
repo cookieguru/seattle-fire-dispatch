@@ -1,20 +1,21 @@
 const BasePage = require('./base.js');
+const {ActivityIndicator, Page, WebView} = require('tabris');
 
 class WebViewPage extends BasePage {
 	factory(title) {
-		this.page = new tabris.Page({
+		this.page = new Page({
 			title: title,
 		});
 
-		this.spinner = new tabris.ActivityIndicator({
+		this.spinner = new ActivityIndicator({
 			centerX: 0,
 			centerY: 0,
 		}).appendTo(this.page);
 
-		this.wv = new tabris.WebView({
+		this.wv = new WebView({
 			top: 0, bottom: 0, left: 0, right: 0,
 			visible: false,
-		}).on('load', () => {
+		}).onLoad(() => {
 			this.wv.visible = true;
 			this.spinner.dispose();
 		}).appendTo(this.page);

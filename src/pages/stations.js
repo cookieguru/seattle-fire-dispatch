@@ -1,35 +1,36 @@
 const BasePage = require('./base.js');
 const StationPage = require('./station.js');
 const {MARGIN} = require('../constants.js');
+const {CollectionView, Composite, ImageView, Page, TextView} = require('tabris');
 
 class StationsPage extends BasePage {
 	factory() {
 		/** @type {Array} */
 		const stations = require('../../data/stations.json');
-		let page = new tabris.Page({
+		let page = new Page({
 			title: 'Stations',
 		});
 
-		new tabris.CollectionView({
+		const cv = new CollectionView({
 			left: 0, top: 0, right: 0, bottom: 0,
 			itemCount: stations.length,
 			cellHeight: screen.width / 3 * 2,
 			createCell: () => {
-				let cell = new tabris.Composite();
-				let outside = new tabris.Composite({
+				let cell = new Composite();
+				let outside = new Composite({
 					left: MARGIN, top: MARGIN / 2, right: MARGIN, bottom: MARGIN,
 					background: '#999999',
 					cornerRadius: 2,
 					elevation: MARGIN / 2,
 				}).appendTo(cell);
 
-				let inside = new tabris.Composite({
+				let inside = new Composite({
 					left: 1, top: 1, bottom: 2, right: 1,
 					background: '#FFFFFF',
 					cornerRadius: 2,
 				}).appendTo(outside);
 
-				new tabris.ImageView({
+				new ImageView({
 					left: 0, top: 0, right: 0, bottom: 0,
 					image: {
 						src: './images/station.png',
@@ -38,22 +39,26 @@ class StationsPage extends BasePage {
 					scaleMode: 'fill',
 				}).appendTo(inside);
 
-				new tabris.Composite({
+				new Composite({
 					left: 0, right: 0, bottom: 0,
 					height: 30,
 					background: 'rgba(255, 0, 0, 0.5)',
 				}).appendTo(inside);
 
-				let name = new tabris.TextView({
+				new TextView({
 					bottom: 5,
 					left: 5,
 					textColor: '#FFFFFF',
 					font: 'bold 18px',
 				}).appendTo(inside);
 
-				cell.on('change:item', (widget, station) => {
-					name.text = station.id + ': ' + station.name;
+				cell.onTap(() => {
+					const index = cv.itemIndex(cell);
+					let station = stations[index];
+					let pg = new StationPage(this.navigationView).factory(station);
+					pg.appendTo(this.navigationView);
 				});
+
 				return cell;
 			},
 			updateCell: (cell, index) => {
@@ -63,10 +68,6 @@ class StationsPage extends BasePage {
 					TextView: {text: typeof station.id === 'number' ? `${station.id} ${station.name}` : station.name},
 				});
 			},
-		}).on('select', ({index}) => {
-			let station = stations[index];
-			let pg = new StationPage(this.navigationView).factory(station);
-			pg.appendTo(this.navigationView);
 		}).appendTo(page);
 
 		return page;

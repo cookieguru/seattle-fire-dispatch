@@ -1,14 +1,14 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.timbond.seattle.fire.dispatch" version="1.0.6" xmlns:android="http://schemas.android.com/apk/res/android">
+<widget id="com.timbond.seattle.fire.dispatch" version="1.1.0 " xmlns:android="http://schemas.android.com/apk/res/android">
 	<name>Seattle Fire Dispatch</name>
 	<description>Android app to display Seattle Fire Department's Real-Time 911 Dispatch</description>
 	<author email="apps@tim-bond.com" href="https://www.tim-bond.com/">Tim Bond</author>
 
 	<preference name="EnableDeveloperConsole" value="$IS_DEBUG" />
 
-	<plugin name="cordova-plugin-globalization" version="1.0.3" />
+	<plugin name="cordova-plugin-globalization" version="1.11.0" />
 	<plugin name="cordova-plugin-theme-detection" version="1.3.0" />
-	<plugin name="tabris-plugin-maps" spec="https://github.com/cookieguru/tabris-plugin-maps">
+	<plugin name="tabris-plugin-maps" version="6.0.0">
 		<variable name="ANDROID_API_KEY" value="$ANDROID_API_KEY" />
 	</plugin>
 	<platform name="android">

@@ -2,7 +2,7 @@
 const fs = require('fs');
 
 if(fs.existsSync('platforms/android')) {
-	const MANIFEST = 'platforms/android/AndroidManifest.xml';
+	const MANIFEST = 'platforms/android/app/src/main/AndroidManifest.xml';
 	let lines = fs.readFileSync(MANIFEST, 'utf8');
 
 	lines = lines.replace(/\s+<uses-permission android:name="android\.permission\.ACCESS_(?:FINE|COARSE)_LOCATION" \/>/g, '');

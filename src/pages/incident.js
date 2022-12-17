@@ -7,6 +7,7 @@ const LocatedIncident = require('../models/located_incident.js');
 const strFmt = require('../util/string_formatter.js');
 const WebViewPage = require('./webview.js');
 const {MARGIN} = require('../constants');
+const {Action, AlertDialog, Button, Composite, Page, ScrollView, Tab, TabFolder, TextView, app} = require('tabris');
 
 class IncidentPage extends BasePage {
 	/**
@@ -18,17 +19,17 @@ class IncidentPage extends BasePage {
 	 * @param {Array} units
 	 */
 	factory(incidentId, timestamp, type, address, level, units) {
-		let page = new tabris.Page({
+		let page = new Page({
 			title: incidentId,
 		});
 
-		let action = new tabris.Action({
+		let action = new Action({
 			title: 'Details',
 			image: {
 				src: './images/details.png',
 				scale: 3,
 			},
-		}).on('select', () => {
+		}).onSelect(() => {
 			let incdDetSvc = new IncidentDetailsService();
 			let wv = new WebViewPage(this.navigationView);
 			wv.factory('Incident Report Detail').appendTo(this.navigationView);
@@ -39,27 +40,28 @@ class IncidentPage extends BasePage {
 			});
 		}).appendTo(this.navigationView);
 
-		page.on('disappear', () => {
+		page.onDisappear(() => {
 			if(!action.isDisposed()) {
 				action.visible = false;
 			}
 		});
-		page.on('appear', () => {
+		page.onAppear(() => {
 			action.visible = true;
 		});
-		page.on('dispose', () => {
+		page.onDispose(() => {
 			action.dispose();
 		});
 
-		let navigateButton = new tabris.Button({
+		let navigateButton = new Button({
 			top: ['prev()', 5],
 			left: 16,
+			style: 'outline',
 			text: 'Directions',
 			enabled: false,
 		});
 
 		let height = Math.floor(screen.height / 3);
-		let mapContainer = new tabris.Composite({
+		let mapContainer = new Composite({
 			top: 0, left: 0, right: 0,
 			height: height,
 		}).appendTo(page);
@@ -68,13 +70,13 @@ class IncidentPage extends BasePage {
 				top: 0, left: 0, right: 0, height: height,
 			}, [new LocatedIncident(null, ll)]).appendTo(mapContainer);
 			navigateButton.enabled = true;
-			navigateButton.on('tap', () => {
+			navigateButton.onTap(() => {
 				let encoded = encodeURIComponent(`${ll} (${address})`);
 				// noinspection JSIgnoredPromiseFromCall
-				tabris.app.launch(`http://maps.google.com/maps?daddr=${encoded}`);
+				app.launch(`http://maps.google.com/maps?daddr=${encoded}`);
 			});
 		}).catch((e) => {
-			new tabris.AlertDialog({
+			new AlertDialog({
 				message: e.message,
 				buttons: {
 					ok: 'OK',
@@ -82,17 +84,17 @@ class IncidentPage extends BasePage {
 			}).open();
 		});
 
-		let scrollView = new tabris.ScrollView({
+		let scrollView = new ScrollView({
 			top: ['prev()', 0], bottom: 0, left: 0, right: 0,
 		}).appendTo(page);
 
-		let dateText = new tabris.TextView({
+		let dateText = new TextView({
 			top: ['prev()', 16], left: 16, right: 16,
 		}).appendTo(scrollView);
 		dateFmt.formatDate(timestamp).then((string) => {
 			dateText.text = string;
 		});
-		let typeText = new tabris.TextView({
+		let typeText = new TextView({
 			top: ['prev()', 5],
 			left: 16,
 			right: 16,
@@ -101,8 +103,8 @@ class IncidentPage extends BasePage {
 		let description = strFmt.incident_description(type);
 		if(description) {
 			typeText.textColor = '#00F';
-			typeText.on('tap', () => {
-				new tabris.AlertDialog({
+			typeText.onTap(() => {
+				new AlertDialog({
 					title: strFmt.incident_type(type),
 					message: description,
 					buttons: {
@@ -111,14 +113,14 @@ class IncidentPage extends BasePage {
 				}).open();
 			});
 		}
-		new tabris.TextView({
+		new TextView({
 			top: ['prev()', 5],
 			left: 16,
 			right: 16,
 			text: address,
 		}).appendTo(scrollView);
 		if(level !== null) {
-			new tabris.TextView({
+			new TextView({
 				top: ['prev()', 5],
 				left: 16,
 				right: 16,
@@ -129,24 +131,24 @@ class IncidentPage extends BasePage {
 		navigateButton.appendTo(scrollView);
 
 		//Only using this component for the header styling
-		new tabris.TabFolder({
+		new TabFolder({
 			left: 16, top: ['prev()', 16], right: 16,
 			paging: true,
 		}).append(
-			new tabris.Tab({
+			new Tab({
 				title: 'Responding units',
 			})
 		).appendTo(scrollView);
 
 		for(let i in units) {
-			new tabris.TextView({
+			new TextView({
 				left: 16, top: ['prev()', 8], right: 16,
 				text: strFmt.unit(units[i]),
 			}).appendTo(scrollView);
 		}
 
 		//Bottom "margin"
-		new tabris.Composite({
+		new Composite({
 			top: ['prev()', 16],
 		}).appendTo(scrollView);
 

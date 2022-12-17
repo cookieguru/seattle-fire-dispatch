@@ -4,6 +4,7 @@ const IncidentPage = require('./incident.js');
 const LocatedIncident = require('../models/located_incident.js');
 const Geocoder = require('../services/geocoder.js');
 const {DEFAULT_LAT_LON} = require('../constants.js');
+const {ActivityIndicator, Page} = require('tabris');
 
 class MapPage extends BasePage {
 	/**
@@ -11,7 +12,7 @@ class MapPage extends BasePage {
 	 * @return {Page}
 	 */
 	factory(incidents) {
-		this.page = new tabris.Page({
+		this.page = new Page({
 			title: incidents.length + ' Active Incident' + (incidents.length === 1 ? '' : 's'),
 		});
 
@@ -37,7 +38,7 @@ class MapPage extends BasePage {
 			});
 		}).appendTo(this.page);
 
-		let spinner = new tabris.ActivityIndicator({
+		let spinner = new ActivityIndicator({
 			top: 0, left: 0, right: 0, bottom: 0,
 			opacity: 0.5,
 		}).appendTo(this.page);

@@ -36,7 +36,7 @@ class Map extends esmaps.Map {
 	addIncident(incident) {
 		this.addMarker(new esmaps.Marker({
 			position: [incident.location.lat, incident.location.lon],
-		}).on('tap', () => {
+		}).onTap(() => {
 			if(typeof this.tapHandler === 'function') {
 				this.tapHandler(incident.incident);
 			}

@@ -15,8 +15,7 @@
     "esmaps": false,
     "fetch": false,
     "navigator": false,
-    "screen": false,
-    "tabris": false
+    "screen": false
   },
   "rules": {
     "array-bracket-spacing": ["error", "never"],
