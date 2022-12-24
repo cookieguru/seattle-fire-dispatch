@@ -18,6 +18,10 @@
 			<application android:usesCleartextTraffic="$IS_DEBUG" />
 		</edit-config>
 
+		<resource-file src="resources/android/values/sfd_theme.xml" target="app/src/main/res/values/sfd_theme.xml" />
+
+		<preference name="Theme" value="@style/Theme.SFD" />
+
 		<icon src="resources/android/drawable-hdpi/ic_launcher.png" density="hdpi"/>
 		<icon src="resources/android/drawable-ldpi/ic_launcher.png" density="ldpi"/>
 		<icon src="resources/android/drawable-mdpi/ic_launcher.png" density="mdpi"/>

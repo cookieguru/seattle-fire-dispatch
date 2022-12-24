@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<style name="Theme.SFD" parent="@style/Theme.Tabris.Light.DarkAppBar">
+		<item name="colorPrimary">#db1f26</item>
+		<item name="colorPrimaryDark">#9b0000</item>
+		<item name="colorAccent">#db1f26</item>
+	</style>
+
+</resources>
