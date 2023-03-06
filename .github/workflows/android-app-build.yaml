@@ -29,11 +29,11 @@ jobs:
       - name: Install application dependencies
         run: |
           npm run --if-present prepare
-          npm install            
+          npm install
 
       - name: Execute build
         env:
-          TABRIS_BUILD_KEY: ${{ secrets.TABRIS_IOS_BUILD_KEY }}
+          TABRIS_BUILD_KEY: ${{ secrets.TABRIS_BUILD_KEY }}
         run: |
           tabris build --release android -- --packageType=bundle
 
